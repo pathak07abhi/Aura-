@@ -326,25 +326,74 @@ function addToBagFromPDP() {
 }
 
 function updateBill(subtotal) {
-  const tax = subtotal * 0.18;
-  const discount = subtotal * 0.20;
-  const total = subtotal + tax - discount;
+  const tax = Math.round(subtotal * 0.18);
+  const isPromo = document.getElementById('promo-status')?.innerText.includes('AURA20');
+  const discount = isPromo ? Math.round(subtotal * 0.20) : 0;
+  const total = Math.round(subtotal + tax - discount);
 
   const subEl = document.getElementById('bill-subtotal');
   const taxEl = document.getElementById('bill-tax');
   const discEl = document.getElementById('bill-discount');
   const totEl = document.getElementById('bill-total');
   const dockTot = document.getElementById('dock-total-val');
+  const modalTotal = document.getElementById('modal-total-pay');
 
   if (subEl) subEl.innerText = `₹${Math.round(subtotal).toLocaleString('en-IN')}`;
-  if (taxEl) taxEl.innerText = `₹${Math.round(tax).toLocaleString('en-IN')}`;
-  if (discEl) discEl.innerText = `-₹${Math.round(discount).toLocaleString('en-IN')}`;
-  if (totEl) totEl.innerText = `₹${Math.round(total).toLocaleString('en-IN')}`;
-  if (dockTot) dockTot.innerText = `₹${Math.round(total).toLocaleString('en-IN')}`;
+  if (taxEl) taxEl.innerText = `₹${tax.toLocaleString('en-IN')}`;
+  if (discEl) discEl.innerText = `-₹${discount.toLocaleString('en-IN')}`;
+  if (totEl) totEl.innerText = `₹${total.toLocaleString('en-IN')}`;
+  if (dockTot) dockTot.innerText = `₹${total.toLocaleString('en-IN')}`;
+  if (modalTotal) modalTotal.innerText = `₹${total.toLocaleString('en-IN')}`;
 }
 
 function openPaymentDrawer() {
-  showToast('Opening Unified Payment Gateway...');
+  const modal = document.getElementById('payment-modal');
+  if (modal) modal.classList.add('active');
+
+  const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+  const tax = Math.round(subtotal * 0.18);
+  const isPromo = document.getElementById('promo-status')?.innerText.includes('AURA20');
+  const discount = isPromo ? Math.round(subtotal * 0.20) : 0;
+  const total = Math.round(subtotal + tax - discount);
+
+  const modalTotal = document.getElementById('modal-total-pay');
+  if (modalTotal) modalTotal.innerText = `₹${total.toLocaleString('en-IN')}`;
+  showToast('Opening Unified Indian Payment Gateway... 💳');
+}
+
+function closePaymentDrawer() {
+  const modal = document.getElementById('payment-modal');
+  if (modal) modal.classList.remove('active');
+}
+
+function handlePlaceOrder(e) {
+  e.preventDefault();
+  const address = document.getElementById('checkout-address')?.value || 'Flat 402, Bandra West, Mumbai 400050';
+  const orderId = 'AUR-IND-' + Math.floor(100000 + Math.random() * 900000);
+  
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<i class="ri-loader-4-line ri-spin"></i> Authorizing Real-Time Payment...`;
+  }
+
+  showToast('Processing payment securely... ⏳');
+
+  setTimeout(() => {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `Confirm & Pay ₹ (INR) <i class="ri-shield-check-fill"></i>`;
+    }
+    closePaymentDrawer();
+    cart = [];
+    renderCart();
+
+    const activeOrderSpan = document.getElementById('active-order-id');
+    if (activeOrderSpan) activeOrderSpan.innerText = `Order #${orderId}`;
+
+    showToast(`🎉 Payment Confirmed! Order #${orderId} placed successfully. Delivering to ${address}`);
+    setTimeout(() => navigateToScreen('screen-profile'), 500);
+  }, 1200);
 }
 
 function selectSize(btn) {
