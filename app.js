@@ -9,8 +9,8 @@ const PRODUCTS = [
     brand: 'AURA STUDIO',
     title: 'AURA Oversized Silk-Linen Co-ord Blazer',
     category: 'Women',
-    price: 149,
-    originalPrice: 249,
+    price: 2999,
+    originalPrice: 4999,
     rating: 4.8,
     reviews: 142,
     discount: '40% OFF',
@@ -24,11 +24,11 @@ const PRODUCTS = [
     brand: 'MONOCHROME',
     title: 'Heavyweight Drop-Shoulder Tee',
     category: 'Men',
-    price: 45,
-    originalPrice: 75,
+    price: 1299,
+    originalPrice: 1999,
     rating: 4.9,
     reviews: 88,
-    discount: '40% OFF',
+    discount: '35% OFF',
     stock: 5,
     image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600',
     tags: ['tee', 'oversized', 'men', 'streetwear']
@@ -39,11 +39,11 @@ const PRODUCTS = [
     brand: 'KINETIC',
     title: 'Pleated Tailored Wide Trousers',
     category: 'Men',
-    price: 89,
-    originalPrice: 130,
+    price: 2199,
+    originalPrice: 3299,
     rating: 4.7,
     reviews: 54,
-    discount: '31% OFF',
+    discount: '33% OFF',
     stock: 28,
     image: 'https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=600',
     tags: ['pants', 'trousers', 'pleated', 'formal']
@@ -54,8 +54,8 @@ const PRODUCTS = [
     brand: 'ETHNIC CRAFT',
     title: 'Handwoven Chanderi Kurta Set',
     category: 'Ethnic',
-    price: 110,
-    originalPrice: 180,
+    price: 2499,
+    originalPrice: 3999,
     rating: 4.9,
     reviews: 112,
     discount: '38% OFF',
@@ -69,11 +69,11 @@ const PRODUCTS = [
     brand: 'AURA URBAN',
     title: 'Minimalist Utility Bomber Jacket',
     category: 'Streetwear',
-    price: 120,
-    originalPrice: 180,
+    price: 3499,
+    originalPrice: 4999,
     rating: 4.6,
     reviews: 67,
-    discount: '33% OFF',
+    discount: '30% OFF',
     stock: 14,
     image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600',
     tags: ['jacket', 'bomber', 'streetwear', 'men']
@@ -84,11 +84,11 @@ const PRODUCTS = [
     brand: 'LUMEN',
     title: 'Draped Asymmetric Satin Midi Dress',
     category: 'Women',
-    price: 135,
-    originalPrice: 210,
+    price: 2899,
+    originalPrice: 4299,
     rating: 4.8,
     reviews: 95,
-    discount: '35% OFF',
+    discount: '32% OFF',
     stock: 22,
     image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600',
     tags: ['dress', 'satin', 'women', 'party']
@@ -96,8 +96,8 @@ const PRODUCTS = [
 ];
 
 let cart = [
-  { id: 'p1', title: 'AURA Oversized Silk Blazer', size: 'S', price: 149, qty: 1, image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300' },
-  { id: 'p3', title: 'Pleated Tailored Trousers', size: 'M', price: 89, qty: 1, image: 'https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=300' }
+  { id: 'p1', title: 'AURA Oversized Silk Blazer', size: 'S', price: 2999, qty: 1, image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300' },
+  { id: 'p3', title: 'Pleated Tailored Trousers', size: 'M', price: 2199, qty: 1, image: 'https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=300' }
 ];
 
 let currentProducts = PRODUCTS;
@@ -389,7 +389,7 @@ function renderHomeProducts(items) {
         <span class="card-brand">${p.brand}</span>
         <h4 class="card-title">${p.title}</h4>
         <div class="card-price-row">
-          <span class="card-price">$${p.price}</span>
+          <span class="card-price">₹${Number(p.price).toLocaleString('en-IN')}</span>
           <span class="rating-tag"><i class="ri-star-fill"></i> ${p.rating}</span>
         </div>
       </div>
@@ -410,7 +410,7 @@ function renderSearchProducts(items) {
         <span class="card-brand">${p.brand}</span>
         <h4 class="card-title">${p.title}</h4>
         <div class="card-price-row">
-          <span class="card-price">$${p.price}</span>
+          <span class="card-price">₹${Number(p.price).toLocaleString('en-IN')}</span>
           <span class="rating-tag"><i class="ri-star-fill"></i> ${p.rating}</span>
         </div>
       </div>
@@ -422,7 +422,7 @@ function openPDP(productId) {
   const prod = PRODUCTS.find(p => p.id === productId) || PRODUCTS[0];
   document.getElementById('pdp-main-image').src = prod.image;
   document.getElementById('pdp-title').innerText = prod.title;
-  document.getElementById('pdp-price').innerText = `$${prod.price}`;
+  document.getElementById('pdp-price').innerText = `₹${Number(prod.price).toLocaleString('en-IN')}`;
   navigateToScreen('screen-pdp');
 }
 
@@ -513,7 +513,7 @@ function renderCart() {
       <div class="item-info">
         <h4 class="item-title">${item.title}</h4>
         <div class="item-meta">Size: ${item.size || 'S'} • Color: Noir</div>
-        <div class="item-price">$${item.price}</div>
+        <div class="item-price">₹${Number(item.price).toLocaleString('en-IN')}</div>
       </div>
       <div class="qty-control">
         <button class="qty-btn" onclick="updateQty('${item.id}', -1)">-</button>
@@ -599,11 +599,11 @@ function updateBill(subtotal) {
   const totEl = document.getElementById('bill-total');
   const dockTot = document.getElementById('dock-total-val');
 
-  if (subEl) subEl.innerText = `$${subtotal.toFixed(2)}`;
-  if (taxEl) taxEl.innerText = `$${tax.toFixed(2)}`;
-  if (discEl) discEl.innerText = `-$${discount.toFixed(2)}`;
-  if (totEl) totEl.innerText = `$${total.toFixed(2)}`;
-  if (dockTot) dockTot.innerText = `$${total.toFixed(2)}`;
+  if (subEl) subEl.innerText = `₹${subtotal.toLocaleString('en-IN')}`;
+  if (taxEl) taxEl.innerText = `₹${tax.toLocaleString('en-IN')}`;
+  if (discEl) discEl.innerText = `-₹${discount.toLocaleString('en-IN')}`;
+  if (totEl) totEl.innerText = `₹${total.toLocaleString('en-IN')}`;
+  if (dockTot) dockTot.innerText = `₹${total.toLocaleString('en-IN')}`;
 }
 
 function openPaymentDrawer() {

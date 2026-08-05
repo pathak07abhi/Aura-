@@ -48,7 +48,7 @@ function renderAdminInventoryList(items) {
       <img src="${p.image}" alt="${p.title}" />
       <div class="inv-info">
         <strong>${p.title}</strong>
-        <span class="inv-sku">SKU: ${p.sku || 'AUR-SKU'} • $${p.price}</span>
+        <span class="inv-sku">SKU: ${p.sku || 'AUR-SKU'} • ₹${Number(p.price).toLocaleString('en-IN')}</span>
         <span class="status-pill ${p.stock > 10 ? 'in-stock' : 'low-stock'}">${p.stock > 0 ? `In Stock (${p.stock} units)` : 'Out of Stock'}</span>
       </div>
       <div class="inv-stepper">

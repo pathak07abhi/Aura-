@@ -274,7 +274,7 @@ function renderCart() {
       <div class="item-info">
         <h4 class="item-title">${item.title}</h4>
         <div class="item-meta">Size: ${item.size || 'S'} • Color: Noir</div>
-        <div class="item-price">$${item.price}</div>
+        <div class="item-price">₹${Number(item.price).toLocaleString('en-IN')}</div>
       </div>
       <div class="qty-control">
         <button class="qty-btn" onclick="updateQty('${item.id}', -1)">-</button>
@@ -320,13 +320,13 @@ function updateQty(id, delta) {
 function addToBagFromPDP() {
   const item = cart.find(i => i.id === 'p1');
   if (item) item.qty += 1;
-  else cart.push({ id: 'p1', title: 'AURA Oversized Silk Blazer', size: 'S', price: 149, qty: 1, image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300' });
+  else cart.push({ id: 'p1', title: 'AURA Oversized Silk Blazer', size: 'S', price: 2999, qty: 1, image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300' });
   renderCart();
   showToast('Added to Shopping Bag! 🛍️');
 }
 
 function updateBill(subtotal) {
-  const tax = subtotal * 0.08;
+  const tax = subtotal * 0.18;
   const discount = subtotal * 0.20;
   const total = subtotal + tax - discount;
 
@@ -336,11 +336,11 @@ function updateBill(subtotal) {
   const totEl = document.getElementById('bill-total');
   const dockTot = document.getElementById('dock-total-val');
 
-  if (subEl) subEl.innerText = `$${subtotal.toFixed(2)}`;
-  if (taxEl) taxEl.innerText = `$${tax.toFixed(2)}`;
-  if (discEl) discEl.innerText = `-$${discount.toFixed(2)}`;
-  if (totEl) totEl.innerText = `$${total.toFixed(2)}`;
-  if (dockTot) dockTot.innerText = `$${total.toFixed(2)}`;
+  if (subEl) subEl.innerText = `₹${Math.round(subtotal).toLocaleString('en-IN')}`;
+  if (taxEl) taxEl.innerText = `₹${Math.round(tax).toLocaleString('en-IN')}`;
+  if (discEl) discEl.innerText = `-₹${Math.round(discount).toLocaleString('en-IN')}`;
+  if (totEl) totEl.innerText = `₹${Math.round(total).toLocaleString('en-IN')}`;
+  if (dockTot) dockTot.innerText = `₹${Math.round(total).toLocaleString('en-IN')}`;
 }
 
 function openPaymentDrawer() {

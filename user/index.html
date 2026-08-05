@@ -484,11 +484,11 @@
 
   </div>
 
-  <!-- UNIFIED PAYMENT & CHECKOUT MODAL -->
+  <!-- UNIFIED INDIAN PAYMENT & CHECKOUT MODAL -->
   <div id="payment-modal" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-header">
-        <h3><i class="ri-secure-payment-line" style="color: var(--accent-gold);"></i> Checkout & Payment</h3>
+        <h3><i class="ri-shield-check-fill" style="color: var(--accent-gold);"></i> Checkout & Payment (INR ₹)</h3>
         <button class="close-modal-btn" onclick="closePaymentDrawer()"><i class="ri-close-line"></i></button>
       </div>
 
@@ -497,36 +497,32 @@
           <label>Delivery Address</label>
           <div class="input-with-icon">
             <i class="ri-map-pin-line input-icon"></i>
-            <input type="text" id="checkout-address" placeholder="742 Evergreen Terrace, NY 10001" required value="742 Evergreen Terrace, NY 10001" style="width:100%; padding:10px 10px 10px 36px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+            <input type="text" id="checkout-address" placeholder="Flat 402, Bandra West, Mumbai 400050" required value="Flat 402, Bandra West, Mumbai 400050" style="width:100%; padding:10px 10px 10px 36px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
           </div>
         </div>
 
         <div class="form-group" style="margin-top:12px;">
           <label>Select Payment Option</label>
           <div class="payment-methods-grid">
-            <div class="pay-option active" onclick="selectPaymentMethod('card', this)">
-              <i class="ri-bank-card-line"></i>
-              <span>Card</span>
-            </div>
-            <div class="pay-option" onclick="selectPaymentMethod('apple', this)">
-              <i class="ri-apple-fill"></i>
-              <span>Apple Pay</span>
-            </div>
-            <div class="pay-option" onclick="selectPaymentMethod('gpay', this)">
-              <i class="ri-google-fill"></i>
-              <span>GPay</span>
-            </div>
-            <div class="pay-option" onclick="selectPaymentMethod('paypal', this)">
-              <i class="ri-paypal-fill"></i>
-              <span>PayPal</span>
-            </div>
-            <div class="pay-option" onclick="selectPaymentMethod('upi', this)">
+            <div class="pay-option active" onclick="selectPaymentMethod('upi', this)">
               <i class="ri-qr-code-line"></i>
               <span>UPI / QR</span>
             </div>
-            <div class="pay-option" onclick="selectPaymentMethod('klarna', this)">
-              <i class="ri-price-tag-3-line"></i>
-              <span>Klarna</span>
+            <div class="pay-option" onclick="selectPaymentMethod('card', this)">
+              <i class="ri-bank-card-line"></i>
+              <span>RuPay / Card</span>
+            </div>
+            <div class="pay-option" onclick="selectPaymentMethod('netbank', this)">
+              <i class="ri-government-line"></i>
+              <span>Net Banking</span>
+            </div>
+            <div class="pay-option" onclick="selectPaymentMethod('wallet', this)">
+              <i class="ri-wallet-3-line"></i>
+              <span>Wallets</span>
+            </div>
+            <div class="pay-option" onclick="selectPaymentMethod('paylater', this)">
+              <i class="ri-time-line"></i>
+              <span>Simpl / EMI</span>
             </div>
             <div class="pay-option" onclick="selectPaymentMethod('cod', this)">
               <i class="ri-hand-coin-line"></i>
@@ -535,93 +531,96 @@
           </div>
         </div>
 
-        <!-- PANE 1: CREDIT / DEBIT CARD -->
-        <div id="pay-pane-card" class="pay-pane active">
+        <!-- PANE 1: UPI / QR CODE (PREFERRED IN INDIA) -->
+        <div id="pay-pane-upi" class="pay-pane active">
+          <div class="form-group" style="margin-top:10px;">
+            <label>UPI ID (Google Pay / PhonePe / Paytm / CRED)</label>
+            <div class="input-with-icon">
+              <i class="ri-smartphone-line input-icon"></i>
+              <input type="text" placeholder="e.g. 9876543210@paytm or user@okicici" value="user@okicici" style="width:100%; padding:10px 10px 10px 36px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+            </div>
+          </div>
+          <div style="text-align:center; margin-top:10px; padding:12px; background:rgba(212,175,55,0.05); border:1px solid rgba(212,175,55,0.2); border-radius:10px;">
+            <i class="ri-qr-code-line" style="font-size:46px; color:var(--accent-gold);"></i>
+            <div style="font-size:12px; color:#FFF; font-weight:700; margin-top:4px;">Instant QR Code Scan & Pay</div>
+            <div style="font-size:11px; color:#AAA;">Open GPay, PhonePe, Paytm, CRED or BHIM app to scan</div>
+          </div>
+        </div>
+
+        <!-- PANE 2: CREDIT / DEBIT CARD (RUPAY / VISA / MASTERCARD) -->
+        <div id="pay-pane-card" class="pay-pane">
           <div class="form-group" style="margin-top:12px;">
-            <label>Card Number</label>
+            <label>Card Number (RuPay, Visa, Mastercard)</label>
             <div class="input-with-icon">
               <i class="ri-card-slide-line input-icon"></i>
-              <input type="text" id="checkout-card" placeholder="4532 •••• •••• 8892" value="4532 9812 3456 8892" style="width:100%; padding:10px 10px 10px 36px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+              <input type="text" id="checkout-card" placeholder="6071 •••• •••• 9921" value="6071 8823 4412 9921" style="width:100%; padding:10px 10px 10px 36px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
             </div>
           </div>
 
           <div style="display:flex; gap:12px; margin-top:12px;">
             <div class="form-group" style="flex:1;">
               <label>Expiry Date</label>
-              <input type="text" placeholder="MM/YY" value="12/28" style="width:100%; padding:10px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+              <input type="text" placeholder="MM/YY" value="08/29" style="width:100%; padding:10px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
             </div>
             <div class="form-group" style="flex:1;">
-              <label>CVV Code</label>
-              <input type="password" placeholder="•••" value="882" style="width:100%; padding:10px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+              <label>CVV / CVV2</label>
+              <input type="password" placeholder="•••" value="419" style="width:100%; padding:10px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
             </div>
           </div>
         </div>
 
-        <!-- PANE 2: APPLE PAY -->
-        <div id="pay-pane-apple" class="pay-pane">
-          <div style="padding:16px; background:rgba(255,255,255,0.04); border-radius:10px; text-align:center; border:1px solid rgba(255,255,255,0.1); margin-top:10px;">
-            <i class="ri-apple-fill" style="font-size:36px; color:#FFF;"></i>
-            <p style="font-size:12px; color:#AAA; margin-top:6px;">Use Touch ID or Face ID on your Apple device to authorize payment instantly.</p>
-          </div>
-        </div>
-
-        <!-- PANE 3: GOOGLE PAY -->
-        <div id="pay-pane-gpay" class="pay-pane">
-          <div style="padding:16px; background:rgba(255,255,255,0.04); border-radius:10px; text-align:center; border:1px solid rgba(255,255,255,0.1); margin-top:10px;">
-            <i class="ri-google-fill" style="font-size:36px; color:#4285F4;"></i>
-            <p style="font-size:12px; color:#AAA; margin-top:6px;">Fast, secure checkout using your saved Google Account cards & address.</p>
-          </div>
-        </div>
-
-        <!-- PANE 4: PAYPAL -->
-        <div id="pay-pane-paypal" class="pay-pane">
-          <div style="padding:16px; background:rgba(0,112,186,0.1); border-radius:10px; text-align:center; border:1px solid rgba(0,112,186,0.3); margin-top:10px;">
-            <i class="ri-paypal-fill" style="font-size:36px; color:#0070BA;"></i>
-            <p style="font-size:12px; color:#AAA; margin-top:6px;">Log in to PayPal to complete your purchase safely with Buyer Protection.</p>
-          </div>
-        </div>
-
-        <!-- PANE 5: UPI / QR CODE -->
-        <div id="pay-pane-upi" class="pay-pane">
+        <!-- PANE 3: NET BANKING -->
+        <div id="pay-pane-netbank" class="pay-pane">
           <div class="form-group" style="margin-top:10px;">
-            <label>Virtual Payment Address (VPA / UPI ID)</label>
-            <input type="text" placeholder="e.g. alex@okicici or 9876543210@paytm" value="alex@okicici" style="width:100%; padding:10px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
-          </div>
-          <div style="text-align:center; margin-top:10px; padding:10px; background:rgba(255,255,255,0.03); border-radius:8px;">
-            <i class="ri-qr-code-line" style="font-size:42px; color:var(--accent-gold);"></i>
-            <div style="font-size:11px; color:#AAA;">Scan & Pay with GPay, PhonePe, Paytm, BHIM</div>
+            <label>Select Bank</label>
+            <select style="width:100%; padding:10px; background:#1E222D; border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;">
+              <option value="HDFC">HDFC Bank</option>
+              <option value="SBI">State Bank of India (SBI)</option>
+              <option value="ICICI">ICICI Bank</option>
+              <option value="AXIS">Axis Bank</option>
+              <option value="KOTAK">Kotak Mahindra Bank</option>
+              <option value="PNB">Punjab National Bank</option>
+            </select>
           </div>
         </div>
 
-        <!-- PANE 6: KLARNA / AFFIRM (PAY IN 4) -->
-        <div id="pay-pane-klarna" class="pay-pane">
+        <!-- PANE 4: WALLETS -->
+        <div id="pay-pane-wallet" class="pay-pane">
+          <div class="form-group" style="margin-top:10px;">
+            <label>Select Wallet</label>
+            <select style="width:100%; padding:10px; background:#1E222D; border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;">
+              <option value="PAYTM">Paytm Wallet</option>
+              <option value="AMAZON">Amazon Pay Balance</option>
+              <option value="MOBIKWIK">Mobikwik Zip</option>
+              <option value="FREECHARGE">Freecharge</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- PANE 5: PAY LATER / EMI -->
+        <div id="pay-pane-paylater" class="pay-pane">
           <div style="padding:14px; background:rgba(255,179,199,0.08); border-radius:10px; border:1px solid rgba(255,179,199,0.3); margin-top:10px;">
-            <strong style="color:#FFB3C7; font-size:13px;"><i class="ri-price-tag-3-line"></i> Pay in 4 Interest-Free Payments</strong>
-            <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:6px; margin-top:10px; font-size:11px; text-align:center;">
-              <div style="background:rgba(0,0,0,0.3); padding:6px; border-radius:6px;"><strong>Today</strong><br/><span style="color:var(--accent-gold);">$52.36</span></div>
-              <div style="background:rgba(0,0,0,0.3); padding:6px; border-radius:6px;"><strong>2 Wks</strong><br/><span>$52.36</span></div>
-              <div style="background:rgba(0,0,0,0.3); padding:6px; border-radius:6px;"><strong>4 Wks</strong><br/><span>$52.36</span></div>
-              <div style="background:rgba(0,0,0,0.3); padding:6px; border-radius:6px;"><strong>6 Wks</strong><br/><span>$52.36</span></div>
-            </div>
+            <strong style="color:#FFB3C7; font-size:13px;"><i class="ri-time-line"></i> 1-Click Checkout with Simpl / LazyPay</strong>
+            <p style="font-size:11px; color:#AAA; margin-top:6px;">No OTP needed. Pay at the end of the month in 1 click.</p>
           </div>
         </div>
 
-        <!-- PANE 7: CASH ON DELIVERY -->
+        <!-- PANE 6: CASH ON DELIVERY -->
         <div id="pay-pane-cod" class="pay-pane">
           <div style="padding:14px; background:rgba(16,185,129,0.08); border-radius:10px; border:1px solid rgba(16,185,129,0.3); margin-top:10px; text-align:center;">
             <i class="ri-hand-coin-line" style="font-size:32px; color:#10B981;"></i>
             <h4 style="color:#10B981; margin:4px 0;">Cash on Delivery Available</h4>
-            <p style="font-size:11px; color:#AAA;">Pay cash or card to courier upon package delivery.</p>
+            <p style="font-size:11px; color:#AAA;">Pay cash or UPI to delivery agent upon order delivery.</p>
           </div>
         </div>
 
         <div style="margin-top:18px; padding:12px; background:rgba(212,175,55,0.1); border-radius:8px; border:1px solid rgba(212,175,55,0.3); display:flex; justify-content:space-between; align-items:center;">
           <span>Total Amount to Pay:</span>
-          <strong id="modal-total-pay" style="font-size:18px; color:var(--accent-gold);">$209.44</strong>
+          <strong id="modal-total-pay" style="font-size:18px; color:var(--accent-gold);">₹4,158</strong>
         </div>
 
         <button type="submit" class="cta-pill full-width pay-cta" style="margin-top:16px;">
-          Confirm & Pay Now <i class="ri-shield-check-fill"></i>
+          Confirm & Pay ₹ (INR) <i class="ri-shield-check-fill"></i>
         </button>
       </form>
     </div>
