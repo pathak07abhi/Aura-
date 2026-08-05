@@ -461,3 +461,24 @@ html, body {
 .modal-header h3 { font-size: 17px; font-weight: 700; color: #FFF; margin: 0; }
 .close-modal-btn { background: none; border: none; color: #A0A0A0; font-size: 20px; cursor: pointer; }
 .close-modal-btn:hover { color: #FFF; }
+
+/* Payment Methods Grid & Panes */
+.payment-methods-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+@media (max-width: 420px) { .payment-methods-grid { grid-template-columns: repeat(3, 1fr); } }
+.pay-option { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px 6px; text-align: center; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: #A0A0A0; }
+.pay-option i { font-size: 20px; color: #CCC; }
+.pay-option:hover { background: rgba(212, 175, 55, 0.08); border-color: rgba(212, 175, 55, 0.4); color: #FFF; }
+.pay-option.active { background: rgba(212, 175, 55, 0.15); border-color: var(--accent-gold); color: var(--accent-gold); box-shadow: 0 4px 14px rgba(212, 175, 55, 0.2); }
+.pay-option.active i { color: var(--accent-gold); }
+
+.pay-pane { display: none; }
+.pay-pane.active { display: block; }
+
+/* Trust Badges & Cart UI Enhancements */
+.cart-trust-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0; padding: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; }
+.trust-badge-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; font-size: 10px; color: #BBB; font-weight: 600; }
+.trust-badge-item i { font-size: 18px; color: var(--accent-gold); }
+
+.cart-item-card { position: relative; }
+.remove-cart-item-btn { position: absolute; top: 12px; right: 12px; background: rgba(255, 94, 58, 0.15); border: 1px solid rgba(255, 94, 58, 0.3); color: #FF5E3A; border-radius: 6px; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; font-size: 13px; }
+.remove-cart-item-btn:hover { background: #FF5E3A; color: #FFF; }

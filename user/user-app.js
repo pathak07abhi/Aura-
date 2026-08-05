@@ -269,10 +269,11 @@ function renderCart() {
 
   container.innerHTML = cart.map(item => `
     <div class="cart-item-card">
+      <button class="remove-cart-item-btn" onclick="removeFromCart('${item.id}')" title="Remove Item"><i class="ri-delete-bin-6-line"></i></button>
       <img src="${item.image}" alt="${item.title}" />
       <div class="item-info">
         <h4 class="item-title">${item.title}</h4>
-        <div class="item-meta">Size: ${item.size} • Color: Noir</div>
+        <div class="item-meta">Size: ${item.size || 'S'} • Color: Noir</div>
         <div class="item-price">$${item.price}</div>
       </div>
       <div class="qty-control">
@@ -285,6 +286,24 @@ function renderCart() {
 
   const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
   updateBill(subtotal);
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(i => i.id !== id);
+  renderCart();
+  showToast('Item removed from Shopping Bag');
+}
+
+function selectPaymentMethod(method, btnElem) {
+  const options = document.querySelectorAll('.pay-option');
+  options.forEach(opt => opt.classList.remove('active'));
+  btnElem.classList.add('active');
+
+  const panes = document.querySelectorAll('.pay-pane');
+  panes.forEach(pane => pane.classList.remove('active'));
+
+  const targetPane = document.getElementById(`pay-pane-${method}`);
+  if (targetPane) targetPane.classList.add('active');
 }
 
 function updateQty(id, delta) {

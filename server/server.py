@@ -158,11 +158,14 @@ class AuraAPIHandler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
 
     def _respond_json(self, status_code, data):
-        self.send_response(status_code)
-        self._send_cors_headers()
-        self.send_header('Content-Type', 'application/json')
-        self.end_headers()
-        self.wfile.write(json.dumps(data).encode('utf-8'))
+        try:
+            self.send_response(status_code)
+            self._send_cors_headers()
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps(data).encode('utf-8'))
+        except (BrokenPipeError, ConnectionResetError):
+            pass
 
     def _read_body_json(self):
         length = int(self.headers.get('Content-Length', 0))
