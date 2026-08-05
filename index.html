@@ -310,85 +310,187 @@
         </div>
       </section>
 
-      <!-- SCREEN 5: PROFILE & LIVE TRACKING -->
+      <!-- SCREEN 5: LUXURY PROFILE, REWARDS & LIVE RADAR TRACKING -->
       <section id="screen-profile" class="app-screen">
-        <div class="app-header inner-header">
-          <h2>My Profile & Orders</h2>
-          <div style="display:flex; gap:8px;">
-            <button class="icon-btn" onclick="openSellerLogin()"><i class="ri-store-3-line"></i> Seller Portal</button>
-            <button class="icon-btn" onclick="handleLogout('user')" style="color: var(--accent-coral);"><i class="ri-logout-box-r-line"></i> Sign Out</button>
+        <!-- Top Navigation Header -->
+        <div class="app-header inner-header profile-luxury-header">
+          <div class="header-title-group">
+            <h2>My VIP Pass & Orders</h2>
+            <span class="header-subtitle">Exclusive Member Hub</span>
+          </div>
+          <div class="header-actions">
+            <button class="mode-pill-btn" onclick="openSellerLogin()">
+              <i class="ri-store-3-line"></i> Seller Hub
+            </button>
+            <button class="icon-btn logout-icon-btn" onclick="handleLogout('user')" title="Sign Out">
+              <i class="ri-logout-box-r-line"></i>
+            </button>
           </div>
         </div>
 
-        <div class="screen-scroll">
-          <div class="profile-card">
-            <div class="avatar-upload-overlay">
-              <img id="user-profile-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200" alt="Avatar" />
-              <input type="file" id="user-avatar-file" accept="image/*" style="display:none;" onchange="handleUserAvatarUpload(event)" />
-              <div class="avatar-cam-badge" onclick="document.getElementById('user-avatar-file').click()" title="Change Profile Picture">
-                <i class="ri-camera-fill"></i>
+        <div class="screen-scroll profile-luxury-scroll">
+          
+          <!-- 1. VIP MEMBERSHIP CARD (MYNTRA LUXE / CRED STYLE) -->
+          <div class="vip-membership-card">
+            <div class="vip-card-shine"></div>
+            <div class="vip-top-row">
+              <div class="avatar-upload-overlay">
+                <img id="user-profile-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200" alt="Avatar" />
+                <input type="file" id="user-avatar-file" accept="image/*" style="display:none;" onchange="handleUserAvatarUpload(event)" />
+                <div class="avatar-cam-badge" onclick="document.getElementById('user-avatar-file').click()" title="Update Photo">
+                  <i class="ri-camera-fill"></i>
+                </div>
+              </div>
+              <div class="vip-user-meta">
+                <div class="vip-tier-tag"><i class="ri-vip-diamond-fill"></i> BLACK DIAMOND TIER</div>
+                <h3 id="user-profile-name">Alex Rivera</h3>
+                <p id="user-profile-email">alex.rivera@aura.design</p>
               </div>
             </div>
-            <div class="profile-info">
-              <h3 id="user-profile-name">Alex Rivera</h3>
-              <p id="user-profile-email">alex.rivera@aura.design</p>
-              <span class="membership-badge" id="user-profile-badge"><i class="ri-vip-crown-fill"></i> AURA VIP Member</span>
+
+            <!-- Member Quick Stats Pills -->
+            <div class="vip-stats-row">
+              <div class="vip-stat-item">
+                <span class="stat-label">AURA Coins</span>
+                <strong class="stat-val"><i class="ri-copper-coin-line"></i> 2,450</strong>
+              </div>
+              <div class="vip-stat-divider"></div>
+              <div class="vip-stat-item">
+                <span class="stat-label">Active Voucher</span>
+                <strong class="stat-val highlight">₹500 OFF</strong>
+              </div>
+              <div class="vip-stat-divider"></div>
+              <div class="vip-stat-item">
+                <span class="stat-label">Orders</span>
+                <strong class="stat-val">15 Orders</strong>
+              </div>
             </div>
           </div>
 
-          <div class="active-order-tracker-card">
+          <!-- 2. LIVE RADAR ORDER TRACKER CARD -->
+          <div class="active-order-tracker-card luxury-tracker">
             <div class="tracker-header">
-              <span class="order-id" id="active-order-id">Order #AUR-98421</span>
-              <span class="status-chip live"><i class="ri-radar-line"></i> In Transit</span>
+              <div>
+                <span class="order-id-label">ACTIVE ORDER</span>
+                <h4 class="order-id" id="active-order-id">Order #AUR-IND-762925</h4>
+              </div>
+              <span class="status-chip live"><i class="ri-radar-line ri-spin"></i> Out For Delivery</span>
             </div>
 
+            <!-- 4-Step Express Progression Stepper -->
             <div class="tracker-progress">
               <div class="step completed">
-                <div class="circle"><i class="ri-check-line"></i></div><span>Ordered</span>
+                <div class="circle"><i class="ri-check-line"></i></div>
+                <span>Ordered</span>
               </div>
               <div class="step completed">
-                <div class="circle"><i class="ri-check-line"></i></div><span>Packed</span>
+                <div class="circle"><i class="ri-check-line"></i></div>
+                <span>Packed</span>
               </div>
-              <div class="step active">
-                <div class="circle"><i class="ri-truck-line"></i></div><span>In Transit</span>
+              <div class="step completed active">
+                <div class="circle"><i class="ri-truck-fill"></i></div>
+                <span>In Transit</span>
               </div>
               <div class="step">
-                <div class="circle"><i class="ri-user-location-line"></i></div><span>Delivered</span>
+                <div class="circle"><i class="ri-user-location-line"></i></div>
+                <span>Delivered</span>
               </div>
             </div>
 
+            <!-- Live Radar Map Simulation -->
             <div class="live-map-card">
-              <div class="map-overlay-info">
-                <div class="driver-info">
-                  <i class="ri-user-star-fill driver-avatar"></i>
-                  <div>
-                    <strong>Marcus (Delivery Agent)</strong>
-                    <p>Arriving Today by 4:00 PM</p>
-                  </div>
-                </div>
-                <button class="call-driver-btn" onclick="showToast('Calling Marcus (+1 800-AURA-RIDE)...')"><i class="ri-phone-fill"></i></button>
-              </div>
+              <div class="radar-scan-line"></div>
               <div class="map-bg-simulator">
                 <div class="pulse-marker"></div>
-                <span class="map-pin-label">📍 0.4 miles away</span>
+                <span class="map-pin-label">📍 0.4 km away • Bandra West</span>
+              </div>
+              <div class="map-overlay-info">
+                <div class="driver-info">
+                  <div class="driver-avatar-circle"><i class="ri-user-star-fill"></i></div>
+                  <div>
+                    <strong>Rahul Sharma (AURA Express Courier)</strong>
+                    <p>Delivering via Electric Scooter • Arriving in 18 Mins</p>
+                  </div>
+                </div>
+                <div class="driver-quick-actions">
+                  <button class="driver-act-btn call" onclick="showToast('Calling Rahul Sharma (+91 98765-43210)...')" title="Call Agent"><i class="ri-phone-fill"></i></button>
+                  <button class="driver-act-btn chat" onclick="showToast('Opening Live Courier Chat... 💬')" title="Chat Agent"><i class="ri-message-3-fill"></i></button>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="menu-list">
-            <div class="menu-item" onclick="openConsumerLogin()">
-              <i class="ri-user-shared-line"></i><span>Customer Sign In / Register</span><i class="ri-arrow-right-s-line"></i>
-            </div>
-            <div class="menu-item" onclick="openSellerLogin()">
-              <i class="ri-store-3-line"></i><span>Seller & Merchant Portal</span><i class="ri-arrow-right-s-line"></i>
-            </div>
-            <div class="menu-item" onclick="showToast('Customer Support Live Chat: Support ID #AURA-HELP')">
-              <i class="ri-customer-service-2-line"></i><span>Customer Support</span><i class="ri-arrow-right-s-line"></i>
-            </div>
-            <div class="menu-item" onclick="handleLogout('user')" style="color: var(--accent-coral);">
-              <i class="ri-logout-box-line" style="color: var(--accent-coral);"></i><span>Sign Out</span><i class="ri-arrow-right-s-line"></i>
+          <!-- 3. CATEGORIZED LUXURY HUB MENU -->
+          <div class="profile-menu-container">
+            <h3 class="menu-section-title">ACCOUNT & PREFERENCES</h3>
+            
+            <div class="menu-list luxury-menu">
+              <div class="menu-item" onclick="navigateToScreen('screen-cart')">
+                <div class="menu-icon-box"><i class="ri-shopping-bag-3-line"></i></div>
+                <div class="menu-text">
+                  <strong>My Orders & Return History</strong>
+                  <small>Track, return or download invoices</small>
+                </div>
+                <span class="menu-badge">1 Active</span>
+                <i class="ri-arrow-right-s-line menu-chevron"></i>
+              </div>
+
+              <div class="menu-item" onclick="navigateToScreen('screen-search')">
+                <div class="menu-icon-box"><i class="ri-heart-3-line"></i></div>
+                <div class="menu-text">
+                  <strong>Wishlist & Saved Outfits</strong>
+                  <small>8 items saved for later</small>
+                </div>
+                <i class="ri-arrow-right-s-line menu-chevron"></i>
+              </div>
+
+              <div class="menu-item" onclick="openPaymentDrawer()">
+                <div class="menu-icon-box"><i class="ri-bank-card-line"></i></div>
+                <div class="menu-text">
+                  <strong>Saved UPI & Payment Methods</strong>
+                  <small>GPay VPA, RuPay Card linked</small>
+                </div>
+                <i class="ri-arrow-right-s-line menu-chevron"></i>
+              </div>
+
+              <div class="menu-item" onclick="showToast('Address: Flat 402, Bandra West, Mumbai 400050')">
+                <div class="menu-icon-box"><i class="ri-map-pin-line"></i></div>
+                <div class="menu-text">
+                  <strong>Saved Addresses</strong>
+                  <small>Home: Flat 402, Bandra West, Mumbai</small>
+                </div>
+                <i class="ri-arrow-right-s-line menu-chevron"></i>
+              </div>
+
+              <div class="menu-item" onclick="showToast('Connecting to 24/7 VIP Concierge Support...')">
+                <div class="menu-icon-box"><i class="ri-customer-service-2-line"></i></div>
+                <div class="menu-text">
+                  <strong>24/7 VIP Customer Support</strong>
+                  <small>Dedicated concierge priority line</small>
+                </div>
+                <i class="ri-arrow-right-s-line menu-chevron"></i>
+              </div>
+
+              <div class="menu-item seller-hub-item" onclick="openSellerLogin()">
+                <div class="menu-icon-box seller-icon-box"><i class="ri-store-3-line"></i></div>
+                <div class="menu-text">
+                  <strong>Seller & Merchant Portal</strong>
+                  <small>Manage product listings & store analytics</small>
+                </div>
+                <i class="ri-arrow-right-s-line menu-chevron"></i>
+              </div>
+
+              <div class="menu-item logout-item" onclick="handleLogout('user')">
+                <div class="menu-icon-box logout-icon-box"><i class="ri-logout-box-r-line"></i></div>
+                <div class="menu-text">
+                  <strong style="color: #FF5E3A;">Sign Out Account</strong>
+                  <small>Logout securely from this device</small>
+                </div>
+                <i class="ri-arrow-right-s-line menu-chevron" style="color: #FF5E3A;"></i>
+              </div>
             </div>
           </div>
+
         </div>
       </section>
 

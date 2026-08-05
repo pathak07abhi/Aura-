@@ -581,3 +581,297 @@
   color: var(--accent-gold) !important;
 }
 
+/* Luxury VIP Profile & Radar Order Tracking Experience */
+.profile-luxury-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+}
+.header-title-group h2 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #FFF;
+  margin: 0;
+}
+.header-subtitle {
+  font-size: 0.7rem;
+  color: var(--accent-gold);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.mode-pill-btn {
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: var(--accent-gold);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.mode-pill-btn:hover {
+  background: var(--accent-gold);
+  color: #000;
+  transform: translateY(-1px);
+}
+.logout-icon-btn {
+  color: #FF5E3A !important;
+  border-color: rgba(255, 94, 58, 0.3) !important;
+}
+
+.vip-membership-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(26, 29, 41, 0.95) 0%, rgba(16, 18, 25, 0.98) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.vip-card-shine {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.15), transparent 50%);
+  pointer-events: none;
+}
+.vip-top-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.vip-user-meta h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #FFF;
+  margin: 2px 0;
+}
+.vip-user-meta p {
+  font-size: 0.78rem;
+  color: #8A8F9E;
+  margin: 0 0 6px 0;
+}
+.vip-tier-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: #000;
+  background: linear-gradient(135deg, #FFE066 0%, #D4AF37 100%);
+  padding: 3px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.vip-stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px 16px;
+}
+.vip-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  text-align: center;
+}
+.vip-stat-divider {
+  width: 1px;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.stat-label {
+  font-size: 0.68rem;
+  color: #8A8F9E;
+  font-weight: 600;
+}
+.stat-val {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #FFF;
+}
+.stat-val.highlight {
+  color: #10B981;
+}
+
+.luxury-tracker {
+  background: var(--surface-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.order-id-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  letter-spacing: 0.8px;
+}
+.order-id {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #FFF;
+  margin: 2px 0 0 0;
+}
+
+.live-map-card {
+  height: 160px;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  background: #0E121A;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 14px;
+}
+.radar-scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FF5E3A, transparent);
+  animation: radarScan 3s linear infinite;
+  z-index: 5;
+  pointer-events: none;
+}
+@keyframes radarScan {
+  0% { top: 0; opacity: 0.8; }
+  50% { top: 100%; opacity: 0.8; }
+  100% { top: 0; opacity: 0.8; }
+}
+
+.driver-avatar-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.driver-quick-actions {
+  display: flex;
+  gap: 8px;
+}
+.driver-act-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: transform 0.2s ease;
+}
+.driver-act-btn:hover {
+  transform: scale(1.1);
+}
+.driver-act-btn.call {
+  background: #10B981;
+}
+.driver-act-btn.chat {
+  background: #3B82F6;
+}
+
+.profile-menu-container {
+  margin-bottom: 30px;
+}
+.menu-section-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #8A8F9E;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+.luxury-menu {
+  background: var(--surface-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.luxury-menu .menu-item {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.2s ease;
+}
+.luxury-menu .menu-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.menu-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 94, 58, 0.12);
+  border: 1px solid rgba(255, 94, 58, 0.25);
+  color: #FF5E3A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.seller-icon-box {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: rgba(212, 175, 55, 0.3);
+  color: var(--accent-gold);
+}
+.logout-icon-box {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #EF4444;
+}
+.menu-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.menu-text strong {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #FFF;
+}
+.menu-text small {
+  font-size: 0.72rem;
+  color: #8A8F9E;
+}
+.menu-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+.menu-chevron {
+  color: #64748B;
+  font-size: 18px;
+}
+
