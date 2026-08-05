@@ -1,0 +1,53 @@
+/* ==========================================================================
+   AURA FASHION DESIGN TOKENS (SHARED DESIGN SYSTEM)
+   ========================================================================== */
+
+:root {
+  /* Color Tokens */
+  --bg-obsidian: #0D0E12;
+  --surface-card: #16181E;
+  --surface-card-hover: #20232B;
+  --surface-glass: rgba(26, 29, 36, 0.78);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(255, 255, 255, 0.18);
+  
+  --accent-coral: #FF5E3A;
+  --accent-coral-glow: rgba(255, 94, 58, 0.35);
+  --accent-gold: #FFB800;
+  
+  --text-primary: #F8FAFC;
+  --text-secondary: #A0A0A0;
+  --text-muted: #999999;
+  
+  --status-success: #10B981;
+  --status-warning: #F59E0B;
+  
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --shadow-glass: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-coral: 0 8px 25px rgba(255, 94, 58, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-obsidian);
+  color: var(--text-primary);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  overflow-x: hidden;
+}

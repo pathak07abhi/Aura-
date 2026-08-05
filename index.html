@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>AURA Fashion - Premium E-Commerce Application</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet">
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="dark-theme">
+  <!-- APP ROOT CONTAINER -->
+  <div class="app-screen-container">
+
+    <!-- CONSUMER MODE SCREENS -->
+    <main id="consumer-view" class="view-pane active">
+
+      <!-- SCREEN 1: DYNAMIC HOME SCREEN -->
+      <section id="screen-home" class="app-screen active">
+        <!-- Header -->
+        <div class="app-header">
+          <div class="user-greeting">
+            <span class="greeting-subtitle">Good Morning 👋</span>
+            <h2 class="greeting-title">Alex Rivera</h2>
+          </div>
+          <div class="header-actions">
+            <button class="icon-btn" onclick="showToast('Delivery Location: NY 10001')"><i
+                class="ri-map-pin-2-line"></i><span class="loc-text">NY 10001</span></button>
+            <button class="icon-btn badge-btn" onclick="showToast('No new notifications')"><i
+                class="ri-notification-3-line"></i><span class="dot"></span></button>
+          </div>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="screen-scroll">
+          <!-- Search Bar Trigger -->
+          <div class="search-trigger-box" onclick="navigateToScreen('screen-search')">
+            <i class="ri-search-line search-icon"></i>
+            <span class="placeholder">Search "Linen Shirts", "Tees"...</span>
+            <div class="trigger-actions">
+              <i class="ri-mic-line action-icon" onclick="event.stopPropagation(); triggerVoiceSearch();"></i>
+              <i class="ri-camera-lens-line action-icon" onclick="event.stopPropagation(); triggerImageSearch();"></i>
+            </div>
+          </div>
+
+          <!-- Story Category Roundels -->
+          <div class="section-title-row">
+            <h3>Categories</h3>
+            <span class="see-all">Explore</span>
+          </div>
+          <div class="category-roundels">
+            <div class="roundel active" onclick="filterCategory('All')">
+              <div class="roundel-img-wrap"><img
+                  src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=150" alt="Trending" /></div>
+              <span>Trending</span>
+            </div>
+            <div class="roundel" onclick="filterCategory('Men')">
+              <div class="roundel-img-wrap"><img
+                  src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=150" alt="Men" /></div>
+              <span>Men</span>
+            </div>
+            <div class="roundel" onclick="filterCategory('Women')">
+              <div class="roundel-img-wrap"><img
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Women" /></div>
+              <span>Women</span>
+            </div>
+            <div class="roundel" onclick="filterCategory('Ethnic')">
+              <div class="roundel-img-wrap"><img
+                  src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=150" alt="Ethnic" /></div>
+              <span>Ethnic</span>
+            </div>
+            <div class="roundel" onclick="filterCategory('Streetwear')">
+              <div class="roundel-img-wrap"><img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=150"
+                  alt="Streetwear" /></div>
+              <span>Streetwear</span>
+            </div>
+          </div>
+
+          <!-- Hero Banner -->
+          <div class="hero-banner-carousel">
+            <div class="hero-slide active">
+              <div class="hero-badge">SUMMER DROP '26</div>
+              <h2>URBAN LINEN COLLECTION</h2>
+              <p>Up to 40% off minimalist streetwear</p>
+              <button class="cta-pill" onclick="navigateToScreen('screen-pdp')">Shop Collection <i
+                  class="ri-arrow-right-line"></i></button>
+            </div>
+          </div>
+
+          <!-- Flash Sale Countdown Banner -->
+          <div class="flash-sale-box">
+            <div class="flash-header">
+              <div class="flash-title"><i class="ri-flashlight-fill"></i> FLASH SALE</div>
+              <div class="countdown-timer" id="timer">02 : 14 : 59</div>
+            </div>
+            <div class="horizontal-scroll-row">
+              <div class="mini-product-card" onclick="navigateToScreen('screen-pdp')">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300" alt="Tee" />
+                <span class="mini-title">Essential Heavyweight Tee</span>
+                <div class="mini-price">$45 <span class="old-price">$75</span></div>
+              </div>
+              <div class="mini-product-card" onclick="navigateToScreen('screen-pdp')">
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=300" alt="Jacket" />
+                <span class="mini-title">Monochrome Bomber Jacket</span>
+                <div class="mini-price">$120 <span class="old-price">$180</span></div>
+              </div>
+              <div class="mini-product-card" onclick="navigateToScreen('screen-pdp')">
+                <img src="https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=300" alt="Pants" />
+                <span class="mini-title">Pleated Tailored Trousers</span>
+                <div class="mini-price">$89 <span class="old-price">$130</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Recommended Grid -->
+          <div class="section-title-row">
+            <h3>Recommended For You</h3>
+            <span class="see-all">Personalized AI</span>
+          </div>
+          <div class="product-grid" id="home-product-grid">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: SMART SEARCH & DISCOVERY -->
+      <section id="screen-search" class="app-screen">
+        <div class="app-header inner-header">
+          <button class="icon-btn" onclick="navigateToScreen('screen-home')"><i class="ri-arrow-left-line"></i></button>
+          <div class="search-input-wrap">
+            <i class="ri-search-line"></i>
+            <input type="text" id="main-search-input" placeholder="Search brands, styles..."
+              oninput="handleSearchInput(this.value)" />
+            <i class="ri-close-circle-fill clear-icon" onclick="clearSearch()"></i>
+          </div>
+          <button class="icon-btn" onclick="openFilterModal()"><i class="ri-options-4-line"></i></button>
+        </div>
+
+        <div class="screen-scroll">
+          <div class="quick-search-actions">
+            <button class="qs-btn" onclick="triggerVoiceSearch()"><i class="ri-mic-fill"></i> Voice Search</button>
+            <button class="qs-btn" onclick="triggerImageSearch()"><i class="ri-camera-lens-fill"></i> Visual Scan</button>
+          </div>
+
+          <div class="search-section">
+            <h4>Trending Right Now 🔥</h4>
+            <div class="tag-cloud">
+              <span class="tag" onclick="quickSearch('Oversized Hoodies')">Oversized Hoodies</span>
+              <span class="tag" onclick="quickSearch('Linen Co-ords')">Linen Co-ords</span>
+              <span class="tag" onclick="quickSearch('Cargo Pants')">Cargo Pants</span>
+              <span class="tag" onclick="quickSearch('Minimalist Blazers')">Minimalist Blazers</span>
+            </div>
+          </div>
+
+          <div class="search-results-section">
+            <div class="results-header">
+              <span id="results-count">Showing Catalog</span>
+              <span class="sort-trigger" onclick="showToast('Sorted by Relevance')">Sort: Relevance ▾</span>
+            </div>
+            <div class="product-grid" id="search-product-grid">
+              <!-- Injected via JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: PRODUCT DETAILS PAGE (PDP) -->
+      <section id="screen-pdp" class="app-screen">
+        <div class="pdp-floating-header">
+          <button class="icon-btn blur-btn" onclick="navigateToScreen('screen-home')"><i
+              class="ri-arrow-left-line"></i></button>
+          <div class="pdp-header-actions">
+            <button class="icon-btn blur-btn" onclick="toggleWishlistPDP(this)"><i class="ri-heart-line"></i></button>
+            <button class="icon-btn blur-btn" onclick="showToast('Product link copied!')"><i
+                class="ri-share-forward-line"></i></button>
+          </div>
+        </div>
+
+        <div class="screen-scroll pdp-scroll">
+          <div class="pdp-gallery-carousel">
+            <img id="pdp-main-image" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800"
+              alt="Product PDP" />
+            <div class="gallery-badge"><i class="ri-video-line"></i> 360° View</div>
+            <div class="gallery-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+
+          <div class="pdp-content-body">
+            <div class="brand-row">
+              <span class="brand-name">AURA STUDIO</span>
+              <span class="rating-badge"><i class="ri-star-fill"></i> 4.8 (142 reviews)</span>
+            </div>
+            <h1 class="pdp-title" id="pdp-title">AURA Oversized Silk-Linen Co-ord Blazer</h1>
+            <div class="pdp-price-row">
+              <span class="current-price" id="pdp-price">$149</span>
+              <span class="original-price">$249</span>
+              <span class="discount-tag">40% OFF</span>
+            </div>
+
+            <div class="pdp-section">
+              <div class="size-header">
+                <label>Select Size</label>
+                <button class="size-chart-btn" onclick="openSizeChartModal()"><i class="ri-ruler-line"></i> Size Guide</button>
+              </div>
+              <div class="size-options">
+                <button class="size-pill" onclick="selectSize(this)">XS</button>
+                <button class="size-pill active" onclick="selectSize(this)">S</button>
+                <button class="size-pill" onclick="selectSize(this)">M</button>
+                <button class="size-pill" onclick="selectSize(this)">L</button>
+              </div>
+              <div class="fit-indicator">
+                <i class="ri-checkbox-circle-fill"></i> 94% of buyers say this fits <strong>True to Size</strong>
+              </div>
+            </div>
+
+            <div class="pdp-section sla-box">
+              <div class="sla-header"><i class="ri-truck-line"></i> Delivery Estimates</div>
+              <div class="pincode-input-row">
+                <input type="text" id="pincode-input" placeholder="Enter Pincode / Zip" value="10001" />
+                <button class="check-btn" onclick="checkDeliverySLA()">Check</button>
+              </div>
+              <p class="sla-result" id="sla-result">⚡ Express Delivery by <strong>Tomorrow, 4:00 PM</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pdp-sticky-dock">
+          <button class="wishlist-btn-dock" onclick="toggleWishlistPDP(this)"><i class="ri-heart-line"></i></button>
+          <button class="add-to-cart-cta" onclick="addToBagFromPDP()">
+            <i class="ri-shopping-bag-3-fill"></i> Add to Bag • $149
+          </button>
+        </div>
+      </section>
+
+      <!-- SCREEN 4: SHOPPING BAG & CHECKOUT -->
+      <section id="screen-cart" class="app-screen">
+        <div class="app-header inner-header">
+          <h2>Shopping Bag (<span id="cart-count">2</span>)</h2>
+          <button class="icon-btn" onclick="clearCart()"><i class="ri-delete-bin-line"></i></button>
+        </div>
+
+        <div class="screen-scroll">
+          <div class="cart-items-list" id="cart-items-container">
+            <!-- Cart items injected via JS -->
+          </div>
+
+          <div class="promo-box">
+            <div class="promo-input-row">
+              <i class="ri-coupon-3-line"></i>
+              <input type="text" id="promo-input" placeholder="Enter Promo Code (e.g. AURA20)" />
+              <button onclick="applyPromo()">Apply</button>
+            </div>
+            <div id="promo-status" class="promo-status-text"></div>
+          </div>
+
+          <div class="bill-breakdown-card">
+            <h3>Order Summary</h3>
+            <div class="bill-row"><span>Subtotal</span><span id="bill-subtotal">$238.00</span></div>
+            <div class="bill-row"><span>Estimated Tax</span><span id="bill-tax">$19.04</span></div>
+            <div class="bill-row"><span>Express Delivery</span><span class="free-text">FREE</span></div>
+            <div class="bill-row discount-row" id="discount-bill-row"><span>Coupon Discount (AURA20)</span><span
+                id="bill-discount">-$47.60</span></div>
+            <div class="divider"></div>
+            <div class="bill-row total-row"><span>Total Payable</span><span id="bill-total">$209.44</span></div>
+          </div>
+        </div>
+
+        <div class="pdp-sticky-dock checkout-dock">
+          <div class="total-preview">
+            <span class="total-label">Total Amount</span>
+            <span class="total-val" id="dock-total-val">$209.44</span>
+          </div>
+          <button class="add-to-cart-cta pay-cta" onclick="openPaymentDrawer()">
+            Proceed to Checkout <i class="ri-arrow-right-line"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- SCREEN 5: PROFILE & LIVE TRACKING -->
+      <section id="screen-profile" class="app-screen">
+        <div class="app-header inner-header">
+          <h2>My Profile & Orders</h2>
+          <div style="display:flex; gap:8px;">
+            <button class="icon-btn" onclick="openSellerLogin()"><i class="ri-store-3-line"></i> Seller Portal</button>
+            <button class="icon-btn" onclick="handleLogout('user')" style="color: var(--accent-coral);"><i class="ri-logout-box-r-line"></i> Sign Out</button>
+          </div>
+        </div>
+
+        <div class="screen-scroll">
+          <div class="profile-card">
+            <div class="avatar-upload-overlay">
+              <img id="user-profile-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200" alt="Avatar" />
+              <input type="file" id="user-avatar-file" accept="image/*" style="display:none;" onchange="handleUserAvatarUpload(event)" />
+              <div class="avatar-cam-badge" onclick="document.getElementById('user-avatar-file').click()" title="Change Profile Picture">
+                <i class="ri-camera-fill"></i>
+              </div>
+            </div>
+            <div class="profile-info">
+              <h3 id="user-profile-name">Alex Rivera</h3>
+              <p id="user-profile-email">alex.rivera@aura.design</p>
+              <span class="membership-badge" id="user-profile-badge"><i class="ri-vip-crown-fill"></i> AURA VIP Member</span>
+            </div>
+          </div>
+
+          <div class="active-order-tracker-card">
+            <div class="tracker-header">
+              <span class="order-id" id="active-order-id">Order #AUR-98421</span>
+              <span class="status-chip live"><i class="ri-radar-line"></i> In Transit</span>
+            </div>
+
+            <div class="tracker-progress">
+              <div class="step completed">
+                <div class="circle"><i class="ri-check-line"></i></div><span>Ordered</span>
+              </div>
+              <div class="step completed">
+                <div class="circle"><i class="ri-check-line"></i></div><span>Packed</span>
+              </div>
+              <div class="step active">
+                <div class="circle"><i class="ri-truck-line"></i></div><span>In Transit</span>
+              </div>
+              <div class="step">
+                <div class="circle"><i class="ri-user-location-line"></i></div><span>Delivered</span>
+              </div>
+            </div>
+
+            <div class="live-map-card">
+              <div class="map-overlay-info">
+                <div class="driver-info">
+                  <i class="ri-user-star-fill driver-avatar"></i>
+                  <div>
+                    <strong>Marcus (Delivery Agent)</strong>
+                    <p>Arriving Today by 4:00 PM</p>
+                  </div>
+                </div>
+                <button class="call-driver-btn" onclick="showToast('Calling Marcus (+1 800-AURA-RIDE)...')"><i class="ri-phone-fill"></i></button>
+              </div>
+              <div class="map-bg-simulator">
+                <div class="pulse-marker"></div>
+                <span class="map-pin-label">📍 0.4 miles away</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-list">
+            <div class="menu-item" onclick="openConsumerLogin()">
+              <i class="ri-user-shared-line"></i><span>Customer Sign In / Register</span><i class="ri-arrow-right-s-line"></i>
+            </div>
+            <div class="menu-item" onclick="openSellerLogin()">
+              <i class="ri-store-3-line"></i><span>Seller & Merchant Portal</span><i class="ri-arrow-right-s-line"></i>
+            </div>
+            <div class="menu-item" onclick="showToast('Customer Support Live Chat: Support ID #AURA-HELP')">
+              <i class="ri-customer-service-2-line"></i><span>Customer Support</span><i class="ri-arrow-right-s-line"></i>
+            </div>
+            <div class="menu-item" onclick="handleLogout('user')" style="color: var(--accent-coral);">
+              <i class="ri-logout-box-line" style="color: var(--accent-coral);"></i><span>Sign Out</span><i class="ri-arrow-right-s-line"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 6: CONSUMER LOGIN & SIGNUP PAGE -->
+      <section id="screen-consumer-login" class="app-screen auth-screen">
+        <div class="auth-top-nav">
+          <div class="auth-brand">
+            <i class="ri-sparkles-fill logo-icon"></i>
+            <span class="logo-text">AURA</span>
+          </div>
+          <button class="switch-mode-link" onclick="openSellerLogin()">
+            Are you a seller? Seller Portal <i class="ri-arrow-right-line"></i>
+          </button>
+        </div>
+
+        <div class="screen-scroll auth-scroll">
+          <div class="auth-card">
+            <!-- Auth Tab Switcher -->
+            <div class="auth-tabs">
+              <button class="auth-tab-btn active" id="user-tab-login-btn" onclick="switchAuthTab('user', 'login')">Sign In</button>
+              <button class="auth-tab-btn" id="user-tab-signup-btn" onclick="switchAuthTab('user', 'signup')">Create Account</button>
+            </div>
+
+            <!-- CONSUMER SIGN IN PANE -->
+            <div id="user-pane-login" class="auth-form-pane active">
+              <div class="auth-header">
+                <h1 class="auth-title">Welcome back to AURA</h1>
+                <p class="auth-subtitle">Discover the latest fashion trends, personalized AI recommendations, and luxury drops.</p>
+              </div>
+
+              <form class="auth-form" onsubmit="handleConsumerSignIn(event)">
+                <div class="form-group">
+                  <label for="consumer-email">Email Address</label>
+                  <div class="input-with-icon">
+                    <i class="ri-mail-line input-icon"></i>
+                    <input type="email" id="consumer-email" placeholder="alex.rivera@aura.design" required value="alex.rivera@aura.design" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="label-row">
+                    <label for="consumer-password">Password</label>
+                    <a href="#" class="forgot-link" onclick="showToast('Password reset link sent to email')">Forgot Password?</a>
+                  </div>
+                  <div class="input-with-icon">
+                    <i class="ri-lock-2-line input-icon"></i>
+                    <input type="password" id="consumer-password" placeholder="••••••••••••" required value="Password123!" />
+                    <i class="ri-eye-off-line toggle-pass-icon" onclick="togglePasswordVisibility('consumer-password', this)"></i>
+                  </div>
+                </div>
+
+                <button type="submit" class="cta-pill full-width auth-primary-btn">
+                  Sign In <i class="ri-arrow-right-line"></i>
+                </button>
+              </form>
+
+              <div class="social-divider"><span>OR CONTINUE WITH</span></div>
+              <div class="social-login-grid">
+                <button class="social-btn" onclick="handleSocialLogin('Google')"><i class="ri-google-fill google-icon"></i> Google</button>
+                <button class="social-btn" onclick="handleSocialLogin('Apple')"><i class="ri-apple-fill apple-icon"></i> Apple</button>
+              </div>
+            </div>
+
+            <!-- CONSUMER SIGN UP PANE -->
+            <div id="user-pane-signup" class="auth-form-pane">
+              <div class="auth-header">
+                <h1 class="auth-title">Join AURA Club</h1>
+                <p class="auth-subtitle">Create your personal fashion profile & get $20 welcome voucher.</p>
+              </div>
+
+              <form class="auth-form" onsubmit="handleConsumerSignUp(event)">
+                <div class="form-group">
+                  <label for="user-signup-name">Full Name</label>
+                  <div class="input-with-icon">
+                    <i class="ri-user-3-line input-icon"></i>
+                    <input type="text" id="user-signup-name" placeholder="e.g. Alex Rivera" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="user-signup-email">Email Address</label>
+                  <div class="input-with-icon">
+                    <i class="ri-mail-line input-icon"></i>
+                    <input type="email" id="user-signup-email" placeholder="alex.rivera@aura.design" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="user-signup-password">Create Password</label>
+                  <div class="input-with-icon">
+                    <i class="ri-lock-2-line input-icon"></i>
+                    <input type="password" id="user-signup-password" placeholder="Min 6 characters" required />
+                    <i class="ri-eye-off-line toggle-pass-icon" onclick="togglePasswordVisibility('user-signup-password', this)"></i>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="user-signup-phone">Phone Number (Optional)</label>
+                  <div class="input-with-icon">
+                    <i class="ri-phone-line input-icon"></i>
+                    <input type="tel" id="user-signup-phone" placeholder="+1 (555) 000-1234" />
+                  </div>
+                </div>
+
+                <!-- Avatar Upload Field -->
+                <div class="form-group">
+                  <label>Profile Picture (Optional File Upload)</label>
+                  <div class="file-upload-box" onclick="document.getElementById('user-signup-avatar-file').click()">
+                    <input type="file" id="user-signup-avatar-file" accept="image/*" onchange="previewUploadImage(event, 'user-signup-avatar-preview')" />
+                    <div class="file-upload-label">
+                      <i class="ri-image-add-line"></i>
+                      <span>Click to upload profile photo</span>
+                    </div>
+                    <img id="user-signup-avatar-preview" class="file-preview-img" alt="Avatar Preview" />
+                  </div>
+                </div>
+
+                <button type="submit" class="cta-pill full-width auth-primary-btn">
+                  Create Account <i class="ri-user-add-line"></i>
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ADMIN / SELLER MODE SCREENS -->
+    <main id="admin-view" class="view-pane">
+
+      <!-- SCREEN 7: ADMIN / SELLER LOGIN & SIGNUP PAGE -->
+      <section id="screen-seller-login" class="app-screen auth-screen seller-auth-screen active">
+        <div class="seller-grid-pattern"></div>
+
+        <div class="auth-top-nav">
+          <div class="auth-brand seller-brand">
+            <i class="ri-store-2-fill logo-icon"></i>
+            <span class="logo-text">AURA <small>SELLER HUB</small></span>
+          </div>
+          <button class="switch-mode-link" onclick="openConsumerLogin()">
+            Looking to shop? Customer Login <i class="ri-arrow-right-line"></i>
+          </button>
+        </div>
+
+        <div class="screen-scroll auth-scroll">
+          <div class="auth-card seller-card">
+            <div class="auth-badge seller-badge">
+              <i class="ri-shield-keyhole-line"></i> ENTERPRISE PORTAL
+            </div>
+
+            <!-- Seller Auth Tabs -->
+            <div class="auth-tabs">
+              <button class="auth-tab-btn active" id="seller-tab-login-btn" onclick="switchAuthTab('seller', 'login')">Seller Sign In</button>
+              <button class="auth-tab-btn" id="seller-tab-signup-btn" onclick="switchAuthTab('seller', 'signup')">Merchant Register</button>
+            </div>
+
+            <!-- SELLER SIGN IN PANE -->
+            <div id="seller-pane-login" class="auth-form-pane active">
+              <div class="auth-header">
+                <h1 class="auth-title">AURA Seller Portal</h1>
+                <p class="auth-subtitle">Sign in to manage store inventory, fulfill orders, and view analytics.</p>
+              </div>
+
+              <form class="auth-form" onsubmit="handleSellerSignIn(event)">
+                <div class="form-group">
+                  <label for="seller-id">Store Email / Business Email</label>
+                  <div class="input-with-icon">
+                    <i class="ri-building-4-line input-icon"></i>
+                    <input type="text" id="seller-id" placeholder="merchant@aura.com" required value="merchant@aurafashion.com" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="label-row">
+                    <label for="seller-password">Merchant Password</label>
+                    <a href="#" class="forgot-link" onclick="showToast('Contact Enterprise Support for Recovery')">Forgot Credentials?</a>
+                  </div>
+                  <div class="input-with-icon">
+                    <i class="ri-key-2-line input-icon"></i>
+                    <input type="password" id="seller-password" placeholder="••••••••••••" required value="MerchantKey99!" />
+                    <i class="ri-eye-off-line toggle-pass-icon" onclick="togglePasswordVisibility('seller-password', this)"></i>
+                  </div>
+                </div>
+
+                <button type="submit" class="cta-pill full-width auth-primary-btn seller-primary-btn">
+                  <i class="ri-dashboard-3-line"></i> Login to Dashboard
+                </button>
+              </form>
+            </div>
+
+            <!-- SELLER SIGN UP PANE -->
+            <div id="seller-pane-signup" class="auth-form-pane">
+              <div class="auth-header">
+                <h1 class="auth-title">New Merchant Onboarding</h1>
+                <p class="auth-subtitle">Register your brand store on AURA global fashion platform.</p>
+              </div>
+
+              <form class="auth-form" onsubmit="handleSellerSignUp(event)">
+                <div class="form-group">
+                  <label for="seller-signup-name">Merchant Contact Name</label>
+                  <div class="input-with-icon">
+                    <i class="ri-user-3-line input-icon"></i>
+                    <input type="text" id="seller-signup-name" placeholder="e.g. Elena Vance" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="seller-signup-store">Store / Brand Name</label>
+                  <div class="input-with-icon">
+                    <i class="ri-store-2-line input-icon"></i>
+                    <input type="text" id="seller-signup-store" placeholder="e.g. AURA NY Flagship" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="seller-signup-email">Business Email</label>
+                  <div class="input-with-icon">
+                    <i class="ri-mail-line input-icon"></i>
+                    <input type="email" id="seller-signup-email" placeholder="contact@brand.com" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="seller-signup-password">Merchant Password</label>
+                  <div class="input-with-icon">
+                    <i class="ri-lock-2-line input-icon"></i>
+                    <input type="password" id="seller-signup-password" placeholder="Min 6 characters" required />
+                    <i class="ri-eye-off-line toggle-pass-icon" onclick="togglePasswordVisibility('seller-signup-password', this)"></i>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="seller-signup-phone">Business Phone</label>
+                  <div class="input-with-icon">
+                    <i class="ri-phone-line input-icon"></i>
+                    <input type="tel" id="seller-signup-phone" placeholder="+1 (800) AURA-BIZ" />
+                  </div>
+                </div>
+
+                <!-- Store Logo File Upload -->
+                <div class="form-group">
+                  <label>Store Logo / Avatar File Upload</label>
+                  <div class="file-upload-box" onclick="document.getElementById('seller-signup-avatar-file').click()">
+                    <input type="file" id="seller-signup-avatar-file" accept="image/*" onchange="previewUploadImage(event, 'seller-signup-avatar-preview')" />
+                    <div class="file-upload-label">
+                      <i class="ri-upload-cloud-2-line"></i>
+                      <span>Upload Store Logo Image</span>
+                    </div>
+                    <img id="seller-signup-avatar-preview" class="file-preview-img" alt="Store Logo Preview" />
+                  </div>
+                </div>
+
+                <button type="submit" class="cta-pill full-width auth-primary-btn seller-primary-btn">
+                  <i class="ri-shield-check-line"></i> Register Merchant Portal
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 8: FULL ADMIN DASHBOARD -->
+      <section id="screen-admin-dashboard" class="app-screen">
+        <!-- Admin Header -->
+        <div class="app-header inner-header admin-header">
+          <div>
+            <span class="admin-badge"><i class="ri-shield-flash-line"></i> AURA SELLER HUB</span>
+            <h2>NY Flagship Store</h2>
+          </div>
+          <div class="header-actions">
+            <button class="icon-btn" onclick="openAddProductModal()"><i class="ri-add-line"></i></button>
+            <button class="icon-btn" onclick="handleLogout('admin')" title="Logout Seller Portal"><i class="ri-logout-box-r-line"></i></button>
+          </div>
+        </div>
+
+        <!-- Admin Sub-Navigation Tab Pills -->
+        <div class="admin-tab-bar">
+          <button class="admin-tab-btn active" onclick="switchAdminTab('overview', this)"><i
+              class="ri-dashboard-3-line"></i> Overview</button>
+          <button class="admin-tab-btn" onclick="switchAdminTab('orders', this)"><i class="ri-shopping-basket-line"></i>
+            Orders <span class="tab-badge">2</span></button>
+          <button class="admin-tab-btn" onclick="switchAdminTab('inventory', this)"><i class="ri-t-shirt-2-line"></i>
+            Inventory</button>
+          <button class="admin-tab-btn" onclick="switchAdminTab('analytics', this)"><i
+              class="ri-bar-chart-box-line"></i> Analytics</button>
+          <button class="admin-tab-btn" onclick="switchAdminTab('settings', this)"><i class="ri-settings-3-line"></i>
+            Settings</button>
+        </div>
+
+        <div class="screen-scroll admin-scroll">
+
+          <!-- SUB-TAB 1: OVERVIEW PANEL -->
+          <div id="admin-tab-overview" class="admin-tab-pane active">
+            <!-- KPI Cards Grid -->
+            <div class="kpi-grid">
+              <div class="kpi-card">
+                <div class="kpi-icon positive"><i class="ri-money-dollar-circle-line"></i></div>
+                <span class="kpi-label">Today's Sales</span>
+                <h3 class="kpi-val">$42,850</h3>
+                <span class="kpi-trend positive"><i class="ri-arrow-up-line"></i> +14.2%</span>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-icon"><i class="ri-shopping-basket-2-line"></i></div>
+                <span class="kpi-label">Total Orders</span>
+                <h3 class="kpi-val">328</h3>
+                <span class="kpi-trend positive"><i class="ri-arrow-up-line"></i> +8.5%</span>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-icon warning"><i class="ri-alert-line"></i></div>
+                <span class="kpi-label">Low Stock</span>
+                <h3 class="kpi-val">5 Items</h3>
+                <span class="kpi-trend warning">Action Req.</span>
+              </div>
+            </div>
+
+            <!-- Revenue Trend Bar Graph Visualizer -->
+            <div class="admin-card-panel">
+              <div class="panel-header">
+                <h3>Weekly Revenue Trend</h3>
+                <span class="badge-tag">This Week</span>
+              </div>
+              <div class="revenue-chart">
+                <div class="chart-col">
+                  <div class="bar" style="height: 60%"></div><span>Mon</span>
+                </div>
+                <div class="chart-col">
+                  <div class="bar" style="height: 80%"></div><span>Tue</span>
+                </div>
+                <div class="chart-col">
+                  <div class="bar" style="height: 45%"></div><span>Wed</span>
+                </div>
+                <div class="chart-col">
+                  <div class="bar" style="height: 95%"></div><span>Thu</span>
+                </div>
+                <div class="chart-col">
+                  <div class="bar active" style="height: 100%"></div><span>Fri</span>
+                </div>
+                <div class="chart-col">
+                  <div class="bar" style="height: 75%"></div><span>Sat</span>
+                </div>
+                <div class="chart-col">
+                  <div class="bar" style="height: 50%"></div><span>Sun</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Ops Buttons -->
+            <div class="admin-section">
+              <h3>Quick Store Operations</h3>
+              <div class="admin-ops-grid">
+                <button class="ops-btn" onclick="showToast('Barcode Scanner initialized')"><i
+                    class="ri-qr-code-line"></i> Scan Stock Barcode</button>
+                <button class="ops-btn" onclick="openAddProductModal()"><i class="ri-add-circle-line"></i> Add New
+                  Apparel Item</button>
+                <button class="ops-btn" onclick="showToast('Exporting Sales Analytics PDF...')"><i
+                    class="ri-file-chart-line"></i> Export PDF Report</button>
+              </div>
+            </div>
+
+            <!-- Live Sales Feed -->
+            <div class="admin-card-panel">
+              <div class="panel-header">
+                <h3>Live Sales Feed</h3>
+                <span class="badge-tag live-tag"><i class="ri-pulse-line"></i> Realtime</span>
+              </div>
+              <div class="recent-sales-list">
+                <div class="sale-row">
+                  <div class="sale-icon"><i class="ri-shopping-bag-3-fill"></i></div>
+                  <div class="sale-details">
+                    <strong>Order #AUR-99018</strong>
+                    <span>Sophia Martinez • Silk Blazer (Size S)</span>
+                  </div>
+                  <div class="sale-meta">
+                    <span class="sale-amount">+$149.00</span>
+                    <span class="sale-time">2 mins ago</span>
+                  </div>
+                </div>
+
+                <div class="sale-row">
+                  <div class="sale-icon"><i class="ri-shopping-bag-3-fill"></i></div>
+                  <div class="sale-details">
+                    <strong>Order #AUR-99017</strong>
+                    <span>Liam K. • Pleated Trousers (Size M)</span>
+                  </div>
+                  <div class="sale-meta">
+                    <span class="sale-amount">+$89.00</span>
+                    <span class="sale-time">14 mins ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- SUB-TAB 2: ORDERS & FULFILLMENT QUEUE PANEL -->
+          <div id="admin-tab-orders" class="admin-tab-pane">
+            <div class="admin-filter-bar">
+              <button class="a-filter active" onclick="filterAdminOrders('all', this)">All (328)</button>
+              <button class="a-filter" onclick="filterAdminOrders('pending', this)">Pending (2)</button>
+              <button class="a-filter" onclick="filterAdminOrders('transit', this)">In Transit (8)</button>
+            </div>
+
+            <div class="admin-order-card">
+              <div class="admin-order-row">
+                <strong>#AUR-99014</strong>
+                <span class="status-tag pending">Needs Dispatch</span>
+              </div>
+              <p>1x Urban Silk Blazer (Size: S, Emerald Black)</p>
+              <div class="order-meta-info">Customer: <strong>Sophia Martinez</strong> • Zip: 10001</div>
+              <div class="admin-card-actions">
+                <button class="btn-sm secondary" onclick="showToast('Shipping Label Printed!')">Print Label</button>
+                <button class="btn-sm primary" onclick="updateOrderStatus(this)">Mark Dispatched</button>
+              </div>
+            </div>
+
+            <div class="admin-order-card">
+              <div class="admin-order-row">
+                <strong>#AUR-99015</strong>
+                <span class="status-tag pending">Needs Dispatch</span>
+              </div>
+              <p>2x Heavyweight Tees (Size: L, Off-White)</p>
+              <div class="order-meta-info">Customer: <strong>Marcus Vance</strong> • Zip: 90210</div>
+              <div class="admin-card-actions">
+                <button class="btn-sm secondary" onclick="showToast('Shipping Label Printed!')">Print Label</button>
+                <button class="btn-sm primary" onclick="updateOrderStatus(this)">Mark Dispatched</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-TAB 3: INVENTORY MANAGEMENT PANEL -->
+          <div id="admin-tab-inventory" class="admin-tab-pane">
+            <div class="inventory-header">
+              <h3>Live Stock Inventory (6)</h3>
+              <button class="cta-pill sm-btn" onclick="openAddProductModal()"><i class="ri-add-line"></i> Add
+                Product</button>
+            </div>
+
+            <div class="inventory-list">
+              <div class="inv-item-card">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=150" alt="Blazer" />
+                <div class="inv-info">
+                  <strong>AURA Oversized Silk Blazer</strong>
+                  <span class="inv-sku">SKU: AUR-BLZ-01 • $149</span>
+                  <span class="status-pill in-stock">In Stock (42 units)</span>
+                </div>
+                <div class="inv-stepper">
+                  <button onclick="adjustStock(this, -1)">-</button>
+                  <span>42</span>
+                  <button onclick="adjustStock(this, 1)">+</button>
+                </div>
+              </div>
+
+              <div class="inv-item-card">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=150" alt="Tee" />
+                <div class="inv-info">
+                  <strong>Heavyweight Drop-Shoulder Tee</strong>
+                  <span class="inv-sku">SKU: AUR-TEE-09 • $45</span>
+                  <span class="status-pill low-stock">Low Stock (5 units)</span>
+                </div>
+                <div class="inv-stepper">
+                  <button onclick="adjustStock(this, -1)">-</button>
+                  <span>5</span>
+                  <button onclick="adjustStock(this, 1)">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-TAB 4: SALES ANALYTICS PANEL -->
+          <div id="admin-tab-analytics" class="admin-tab-pane">
+            <div class="admin-card-panel">
+              <h3>Category Revenue Share</h3>
+              <div class="category-share-list">
+                <div class="cat-share-row">
+                  <span>Streetwear Collection</span>
+                  <strong>42% ($17,997)</strong>
+                </div>
+                <div class="progress-bar-wrap">
+                  <div class="fill" style="width: 42%;"></div>
+                </div>
+
+                <div class="cat-share-row">
+                  <span>Women's Co-ords</span>
+                  <strong>35% ($14,997)</strong>
+                </div>
+                <div class="progress-bar-wrap">
+                  <div class="fill" style="width: 35%;"></div>
+                </div>
+
+                <div class="cat-share-row">
+                  <span>Ethnic & Festive</span>
+                  <strong>23% ($9,856)</strong>
+                </div>
+                <div class="progress-bar-wrap">
+                  <div class="fill" style="width: 23%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-TAB 5: STORE SETTINGS PANEL -->
+          <div id="admin-tab-settings" class="admin-tab-pane">
+            <div class="admin-card-panel">
+              <h3>Store Settings</h3>
+              <div class="setting-toggle-row">
+                <div>
+                  <strong>Accepting Online Orders</strong>
+                  <p>Store is currently live and receiving payments</p>
+                </div>
+                <input type="checkbox" checked />
+              </div>
+              <div class="setting-toggle-row">
+                <div>
+                  <strong>Auto-Dispatch Courier SLA</strong>
+                  <p>Automatically assign driver on order placement</p>
+                </div>
+                <input type="checkbox" checked />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- CONSUMER BOTTOM NAVIGATION BAR -->
+    <nav class="bottom-nav-bar" id="consumer-bottom-nav">
+      <button class="nav-item active" onclick="navigateToScreen('screen-home')">
+        <i class="ri-home-5-line nav-icon"></i>
+        <span>Home</span>
+      </button>
+      <button class="nav-item" onclick="navigateToScreen('screen-search')">
+        <i class="ri-search-2-line nav-icon"></i>
+        <span>Explore</span>
+      </button>
+      <button class="nav-item nav-cart-icon" onclick="navigateToScreen('screen-cart')">
+        <i class="ri-shopping-bag-3-line nav-icon"></i>
+        <span class="badge" id="nav-cart-badge">2</span>
+        <span>Bag</span>
+      </button>
+      <button class="nav-item" onclick="navigateToScreen('screen-profile')">
+        <i class="ri-user-3-line nav-icon"></i>
+        <span>Account</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- ADMIN ADD NEW PRODUCT MODAL WITH REAL FILE UPLOAD -->
+  <div id="add-product-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="ri-add-circle-fill" style="color: var(--accent-gold);"></i> Add New Apparel Item</h3>
+        <button class="close-modal-btn" onclick="closeAddProductModal()"><i class="ri-close-line"></i></button>
+      </div>
+
+      <form id="add-product-form" onsubmit="handleCreateProduct(event)">
+        <div class="form-group">
+          <label for="prod-title">Item Title</label>
+          <input type="text" id="prod-title" class="input-field" placeholder="e.g. Vintage Leather Trench Coat" required style="width:100%; padding:10px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+        </div>
+
+        <div class="form-group" style="margin-top:12px;">
+          <label for="prod-brand">Brand / Designer</label>
+          <input type="text" id="prod-brand" class="input-field" placeholder="e.g. AURA STUDIO" required style="width:100%; padding:10px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+        </div>
+
+        <div style="display:flex; gap:12px; margin-top:12px;">
+          <div class="form-group" style="flex:1;">
+            <label for="prod-category">Category</label>
+            <select id="prod-category" style="width:100%; padding:10px; background:#1E222D; border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;">
+              <option value="Women">Women</option>
+              <option value="Men">Men</option>
+              <option value="Ethnic">Ethnic</option>
+              <option value="Streetwear">Streetwear</option>
+            </select>
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label for="prod-price">Price ($)</label>
+            <input type="number" id="prod-price" placeholder="129" required style="width:100%; padding:10px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label for="prod-stock">Stock Units</label>
+            <input type="number" id="prod-stock" placeholder="25" required value="20" style="width:100%; padding:10px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:12px;">
+          <label>Product Apparel Image (File Upload)</label>
+          <div class="file-upload-box" onclick="document.getElementById('prod-image-file').click()">
+            <input type="file" id="prod-image-file" accept="image/*" onchange="previewUploadImage(event, 'prod-image-preview')" />
+            <div class="file-upload-label">
+              <i class="ri-upload-cloud-line"></i>
+              <span>Upload Product Photo from Device</span>
+            </div>
+            <img id="prod-image-preview" class="file-preview-img" alt="Product Image Preview" />
+          </div>
+        </div>
+
+        <button type="submit" class="cta-pill full-width" style="margin-top:16px;">
+          Save & Publish Item <i class="ri-check-line"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- UNIFIED PAYMENT & CHECKOUT MODAL -->
+  <div id="payment-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="ri-secure-payment-line" style="color: var(--accent-gold);"></i> Checkout & Payment</h3>
+        <button class="close-modal-btn" onclick="closePaymentDrawer()"><i class="ri-close-line"></i></button>
+      </div>
+
+      <form id="checkout-form" onsubmit="handlePlaceOrder(event)">
+        <div class="form-group">
+          <label>Delivery Address</label>
+          <div class="input-with-icon">
+            <i class="ri-map-pin-line input-icon"></i>
+            <input type="text" id="checkout-address" placeholder="742 Evergreen Terrace, NY 10001" required value="742 Evergreen Terrace, NY 10001" style="width:100%; padding:10px 10px 10px 36px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:12px;">
+          <label>Payment Method</label>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:6px;">
+            <label style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.05); padding:10px; border-radius:8px; border:1px solid var(--accent-gold); cursor:pointer;">
+              <input type="radio" name="pay-method" value="card" checked />
+              <i class="ri-bank-card-line" style="color:var(--accent-gold);"></i> Credit Card
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.05); padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); cursor:pointer;">
+              <input type="radio" name="pay-method" value="apple" />
+              <i class="ri-apple-fill"></i> Apple Pay
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:12px;">
+          <label>Card Number</label>
+          <div class="input-with-icon">
+            <i class="ri-card-slide-line input-icon"></i>
+            <input type="text" id="checkout-card" placeholder="4532 •••• •••• 8892" required value="4532 9812 3456 8892" style="width:100%; padding:10px 10px 10px 36px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+          </div>
+        </div>
+
+        <div style="display:flex; gap:12px; margin-top:12px;">
+          <div class="form-group" style="flex:1;">
+            <label>Expiry Date</label>
+            <input type="text" placeholder="MM/YY" value="12/28" required style="width:100%; padding:10px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label>CVV Security Code</label>
+            <input type="password" placeholder="•••" value="882" required style="width:100%; padding:10px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+          </div>
+        </div>
+
+        <div style="margin-top:18px; padding:12px; background:rgba(212,175,55,0.1); border-radius:8px; border:1px solid rgba(212,175,55,0.3); display:flex; justify-content:space-between; align-items:center;">
+          <span>Total Amount to Pay:</span>
+          <strong id="modal-total-pay" style="font-size:18px; color:var(--accent-gold);">$209.44</strong>
+        </div>
+
+        <button type="submit" class="cta-pill full-width pay-cta" style="margin-top:16px;">
+          Confirm & Pay Now <i class="ri-shield-check-fill"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SIZE GUIDE MODAL -->
+  <div id="size-chart-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="ri-ruler-fill" style="color: var(--accent-gold);"></i> Apparel Size Guide</h3>
+        <button class="close-modal-btn" onclick="closeSizeChartModal()"><i class="ri-close-line"></i></button>
+      </div>
+      <p style="font-size:12px; color:#A0A0A0; margin-bottom:14px;">All measurements in inches (IN). Standard AURA Tailored Fit.</p>
+      <table style="width:100%; border-collapse:collapse; text-align:left; font-size:13px;">
+        <thead>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.1); color:var(--accent-gold);">
+            <th style="padding:8px;">Size</th>
+            <th style="padding:8px;">Bust / Chest</th>
+            <th style="padding:8px;">Waist</th>
+            <th style="padding:8px;">Hips</th>
+          </tr>
+        </thead>
+        <tbody style="color:#DDD;">
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:8px;"><strong>XS</strong></td>
+            <td style="padding:8px;">32" - 34"</td>
+            <td style="padding:8px;">25" - 27"</td>
+            <td style="padding:8px;">34" - 36"</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:8px;"><strong>S</strong></td>
+            <td style="padding:8px;">34" - 36"</td>
+            <td style="padding:8px;">27" - 29"</td>
+            <td style="padding:8px;">36" - 38"</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:8px;"><strong>M</strong></td>
+            <td style="padding:8px;">38" - 40"</td>
+            <td style="padding:8px;">30" - 32"</td>
+            <td style="padding:8px;">40" - 42"</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;"><strong>L</strong></td>
+            <td style="padding:8px;">42" - 44"</td>
+            <td style="padding:8px;">34" - 36"</td>
+            <td style="padding:8px;">44" - 46"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SEARCH FILTER MODAL -->
+  <div id="filter-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="ri-options-4-fill" style="color: var(--accent-gold);"></i> Filter Catalog</h3>
+        <button class="close-modal-btn" onclick="closeFilterModal()"><i class="ri-close-line"></i></button>
+      </div>
+      <form onsubmit="applySearchFilters(event)">
+        <div class="form-group">
+          <label>Category</label>
+          <select id="filter-cat-select" style="width:100%; padding:10px; background:#1E222D; border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;">
+            <option value="All">All Categories</option>
+            <option value="Women">Women</option>
+            <option value="Men">Men</option>
+            <option value="Ethnic">Ethnic</option>
+            <option value="Streetwear">Streetwear</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-top:12px;">
+          <label>Maximum Price ($)</label>
+          <input type="number" id="filter-max-price" placeholder="e.g. 200" style="width:100%; padding:10px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;" />
+        </div>
+        <button type="submit" class="cta-pill full-width" style="margin-top:16px;">
+          Apply Filters <i class="ri-check-line"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- BARCODE SCANNER MODAL -->
+  <div id="barcode-modal" class="modal-overlay">
+    <div class="modal-content" style="text-align:center;">
+      <div class="modal-header">
+        <h3><i class="ri-qr-code-line" style="color: var(--accent-gold);"></i> Stock Barcode Scanner</h3>
+        <button class="close-modal-btn" onclick="closeBarcodeModal()"><i class="ri-close-line"></i></button>
+      </div>
+      <div style="margin:20px 0; padding:30px; background:#000; border:2px dashed var(--accent-gold); border-radius:12px; position:relative;">
+        <i class="ri-barcode-box-line" style="font-size:64px; color:var(--accent-gold);"></i>
+        <div style="font-family:monospace; margin-top:10px; color:#FFF;">AUR-8891-SKU</div>
+      </div>
+      <button class="cta-pill full-width" onclick="simulateBarcodeScan()">Simulate Scan Code</button>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container"></div>
+
+  <script src="shared/api-client.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

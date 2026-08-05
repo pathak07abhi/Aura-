@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>AURA Fashion - Customer Store</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/design-tokens.css" />
+  <link rel="stylesheet" href="user-styles.css" />
+</head>
+<body class="dark-theme">
+  <!-- APP ROOT CONTAINER -->
+  <div class="app-screen-container">
+
+    <!-- CONSUMER MODE SCREENS -->
+    <main id="consumer-view" class="view-pane active">
+
+      <!-- SCREEN 1: DYNAMIC HOME SCREEN -->
+      <section id="screen-home" class="app-screen active">
+        <!-- Header -->
+        <div class="app-header">
+          <div class="user-greeting">
+            <span class="greeting-subtitle">Good Morning 👋</span>
+            <h2 class="greeting-title">Alex Rivera</h2>
+          </div>
+          <div class="header-actions">
+            <button class="icon-btn" onclick="showToast('Delivery Location: NY 10001')"><i class="ri-map-pin-2-line"></i><span class="loc-text">NY 10001</span></button>
+            <button class="icon-btn badge-btn" onclick="showToast('No new notifications')"><i class="ri-notification-3-line"></i><span class="dot"></span></button>
+          </div>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="screen-scroll">
+          <!-- Search Bar Trigger -->
+          <div class="search-trigger-box" onclick="navigateToScreen('screen-search')">
+            <i class="ri-search-line search-icon"></i>
+            <span class="placeholder">Search "Linen Shirts", "Tees"...</span>
+            <div class="trigger-actions">
+              <i class="ri-mic-line action-icon" onclick="event.stopPropagation(); triggerVoiceSearch();"></i>
+              <i class="ri-camera-lens-line action-icon" onclick="event.stopPropagation(); triggerImageSearch();"></i>
+            </div>
+          </div>
+
+          <!-- Story Category Roundels -->
+          <div class="section-title-row">
+            <h3>Categories</h3>
+            <span class="see-all">Explore</span>
+          </div>
+          <div class="category-roundels">
+            <div class="roundel active" onclick="filterCategory('All')">
+              <div class="roundel-img-wrap"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=150" alt="Trending" /></div>
+              <span>Trending</span>
+            </div>
+            <div class="roundel" onclick="filterCategory('Men')">
+              <div class="roundel-img-wrap"><img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=150" alt="Men" /></div>
+              <span>Men</span>
+            </div>
+            <div class="roundel" onclick="filterCategory('Women')">
+              <div class="roundel-img-wrap"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Women" /></div>
+              <span>Women</span>
+            </div>
+            <div class="roundel" onclick="filterCategory('Ethnic')">
+              <div class="roundel-img-wrap"><img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=150" alt="Ethnic" /></div>
+              <span>Ethnic</span>
+            </div>
+            <div class="roundel" onclick="filterCategory('Streetwear')">
+              <div class="roundel-img-wrap"><img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=150" alt="Streetwear" /></div>
+              <span>Streetwear</span>
+            </div>
+          </div>
+
+          <!-- Hero Banner -->
+          <div class="hero-banner-carousel">
+            <div class="hero-slide active">
+              <div class="hero-badge">SUMMER DROP '26</div>
+              <h2>URBAN LINEN COLLECTION</h2>
+              <p>Up to 40% off minimalist streetwear</p>
+              <button class="cta-pill" onclick="navigateToScreen('screen-pdp')">Shop Collection <i class="ri-arrow-right-line"></i></button>
+            </div>
+          </div>
+
+          <!-- Flash Sale Countdown Banner -->
+          <div class="flash-sale-box">
+            <div class="flash-header">
+              <div class="flash-title"><i class="ri-flashlight-fill"></i> FLASH SALE</div>
+              <div class="countdown-timer" id="timer">02 : 14 : 59</div>
+            </div>
+            <div class="horizontal-scroll-row">
+              <div class="mini-product-card" onclick="navigateToScreen('screen-pdp')">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300" alt="Tee" />
+                <span class="mini-title">Essential Heavyweight Tee</span>
+                <div class="mini-price">$45 <span class="old-price">$75</span></div>
+              </div>
+              <div class="mini-product-card" onclick="navigateToScreen('screen-pdp')">
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=300" alt="Jacket" />
+                <span class="mini-title">Monochrome Bomber Jacket</span>
+                <div class="mini-price">$120 <span class="old-price">$180</span></div>
+              </div>
+              <div class="mini-product-card" onclick="navigateToScreen('screen-pdp')">
+                <img src="https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=300" alt="Pants" />
+                <span class="mini-title">Pleated Tailored Trousers</span>
+                <div class="mini-price">$89 <span class="old-price">$130</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Recommended Grid -->
+          <div class="section-title-row">
+            <h3>Recommended For You</h3>
+            <span class="see-all">Personalized AI</span>
+          </div>
+          <div class="product-grid" id="home-product-grid">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: SMART SEARCH & DISCOVERY -->
+      <section id="screen-search" class="app-screen">
+        <div class="app-header inner-header">
+          <button class="icon-btn" onclick="navigateToScreen('screen-home')"><i class="ri-arrow-left-line"></i></button>
+          <div class="search-input-wrap">
+            <i class="ri-search-line"></i>
+            <input type="text" id="main-search-input" placeholder="Search brands, styles..." oninput="handleSearchInput(this.value)" />
+            <i class="ri-close-circle-fill clear-icon" onclick="clearSearch()"></i>
+          </div>
+          <button class="icon-btn" onclick="openFilterModal()"><i class="ri-options-4-line"></i></button>
+        </div>
+
+        <div class="screen-scroll">
+          <div class="quick-search-actions">
+            <button class="qs-btn" onclick="triggerVoiceSearch()"><i class="ri-mic-fill"></i> Voice Search</button>
+            <button class="qs-btn" onclick="triggerImageSearch()"><i class="ri-camera-lens-fill"></i> Visual Scan</button>
+          </div>
+
+          <div class="search-section">
+            <h4>Trending Right Now 🔥</h4>
+            <div class="tag-cloud">
+              <span class="tag" onclick="quickSearch('Oversized Hoodies')">Oversized Hoodies</span>
+              <span class="tag" onclick="quickSearch('Linen Co-ords')">Linen Co-ords</span>
+              <span class="tag" onclick="quickSearch('Cargo Pants')">Cargo Pants</span>
+              <span class="tag" onclick="quickSearch('Minimalist Blazers')">Minimalist Blazers</span>
+            </div>
+          </div>
+
+          <div class="search-results-section">
+            <div class="results-header">
+              <span id="results-count">Showing Catalog</span>
+              <span class="sort-trigger" onclick="showToast('Sorted by Relevance')">Sort: Relevance ▾</span>
+            </div>
+            <div class="product-grid" id="search-product-grid">
+              <!-- Injected via JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: PRODUCT DETAILS PAGE (PDP) -->
+      <section id="screen-pdp" class="app-screen">
+        <div class="pdp-floating-header">
+          <button class="icon-btn blur-btn" onclick="navigateToScreen('screen-home')"><i class="ri-arrow-left-line"></i></button>
+          <div class="pdp-header-actions">
+            <button class="icon-btn blur-btn" onclick="toggleWishlistPDP(this)"><i class="ri-heart-line"></i></button>
+            <button class="icon-btn blur-btn" onclick="showToast('Product link copied!')"><i class="ri-share-forward-line"></i></button>
+          </div>
+        </div>
+
+        <div class="screen-scroll pdp-scroll">
+          <div class="pdp-gallery-carousel">
+            <img id="pdp-main-image" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800" alt="Product PDP" />
+            <div class="gallery-badge"><i class="ri-video-line"></i> 360° View</div>
+            <div class="gallery-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+
+          <div class="pdp-content-body">
+            <div class="brand-row">
+              <span class="brand-name">AURA STUDIO</span>
+              <span class="rating-badge"><i class="ri-star-fill"></i> 4.8 (142 reviews)</span>
+            </div>
+            <h1 class="pdp-title" id="pdp-title">AURA Oversized Silk-Linen Co-ord Blazer</h1>
+            <div class="pdp-price-row">
+              <span class="current-price" id="pdp-price">$149</span>
+              <span class="original-price">$249</span>
+              <span class="discount-tag">40% OFF</span>
+            </div>
+
+            <div class="pdp-section">
+              <div class="size-header">
+                <label>Select Size</label>
+                <button class="size-chart-btn" onclick="openSizeChartModal()"><i class="ri-ruler-line"></i> Size Guide</button>
+              </div>
+              <div class="size-options">
+                <button class="size-pill" onclick="selectSize(this)">XS</button>
+                <button class="size-pill active" onclick="selectSize(this)">S</button>
+                <button class="size-pill" onclick="selectSize(this)">M</button>
+                <button class="size-pill" onclick="selectSize(this)">L</button>
+              </div>
+              <div class="fit-indicator">
+                <i class="ri-checkbox-circle-fill"></i> 94% of buyers say this fits <strong>True to Size</strong>
+              </div>
+            </div>
+
+            <div class="pdp-section sla-box">
+              <div class="sla-header"><i class="ri-truck-line"></i> Delivery Estimates</div>
+              <div class="pincode-input-row">
+                <input type="text" id="pincode-input" placeholder="Enter Pincode / Zip" value="10001" />
+                <button class="check-btn" onclick="checkDeliverySLA()">Check</button>
+              </div>
+              <p class="sla-result" id="sla-result">⚡ Express Delivery by <strong>Tomorrow, 4:00 PM</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pdp-sticky-dock">
+          <button class="wishlist-btn-dock" onclick="toggleWishlistPDP(this)"><i class="ri-heart-line"></i></button>
+          <button class="add-to-cart-cta" onclick="addToBagFromPDP()">
+            <i class="ri-shopping-bag-3-fill"></i> Add to Bag • $149
+          </button>
+        </div>
+      </section>
+
+      <!-- SCREEN 4: SHOPPING BAG & CHECKOUT -->
+      <section id="screen-cart" class="app-screen">
+        <div class="app-header inner-header">
+          <h2>Shopping Bag (<span id="cart-count">2</span>)</h2>
+          <button class="icon-btn" onclick="clearCart()"><i class="ri-delete-bin-line"></i></button>
+        </div>
+
+        <div class="screen-scroll">
+          <div class="cart-items-list" id="cart-items-container">
+            <!-- Cart items injected via JS -->
+          </div>
+
+          <div class="promo-box">
+            <div class="promo-input-row">
+              <i class="ri-coupon-3-line"></i>
+              <input type="text" id="promo-input" placeholder="Enter Promo Code (e.g. AURA20)" />
+              <button onclick="applyPromo()">Apply</button>
+            </div>
+            <div id="promo-status" class="promo-status-text"></div>
+          </div>
+
+          <div class="bill-breakdown-card">
+            <h3>Order Summary</h3>
+            <div class="bill-row"><span>Subtotal</span><span id="bill-subtotal">$238.00</span></div>
+            <div class="bill-row"><span>Estimated Tax</span><span id="bill-tax">$19.04</span></div>
+            <div class="bill-row"><span>Express Delivery</span><span class="free-text">FREE</span></div>
+            <div class="bill-row discount-row" id="discount-bill-row"><span>Coupon Discount (AURA20)</span><span id="bill-discount">-$47.60</span></div>
+            <div class="divider"></div>
+            <div class="bill-row total-row"><span>Total Payable</span><span id="bill-total">$209.44</span></div>
+          </div>
+        </div>
+
+        <div class="pdp-sticky-dock checkout-dock">
+          <div class="total-preview">
+            <span class="total-label">Total Amount</span>
+            <span class="total-val" id="dock-total-val">$209.44</span>
+          </div>
+          <button class="add-to-cart-cta pay-cta" onclick="openPaymentDrawer()">
+            Proceed to Checkout <i class="ri-arrow-right-line"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- SCREEN 5: PROFILE & LIVE TRACKING -->
+      <section id="screen-profile" class="app-screen">
+        <div class="app-header inner-header">
+          <h2>My Profile & Orders</h2>
+          <a href="../admin/index.html" class="icon-btn"><i class="ri-store-3-line"></i> Seller Portal</a>
+        </div>
+
+        <div class="screen-scroll">
+          <div class="profile-card">
+            <div class="avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200" alt="Avatar" />
+            </div>
+            <div class="profile-info">
+              <h3>Alex Rivera</h3>
+              <p>alex.rivera@aura.design</p>
+              <span class="membership-badge"><i class="ri-vip-crown-fill"></i> AURA VIP Member</span>
+            </div>
+          </div>
+
+          <div class="active-order-tracker-card">
+            <div class="tracker-header">
+              <span class="order-id">Order #AUR-98421</span>
+              <span class="status-chip live"><i class="ri-radar-line"></i> In Transit</span>
+            </div>
+
+            <div class="tracker-progress">
+              <div class="step completed"><div class="circle"><i class="ri-check-line"></i></div><span>Ordered</span></div>
+              <div class="step completed"><div class="circle"><i class="ri-check-line"></i></div><span>Packed</span></div>
+              <div class="step active"><div class="circle"><i class="ri-truck-line"></i></div><span>In Transit</span></div>
+              <div class="step"><div class="circle"><i class="ri-user-location-line"></i></div><span>Delivered</span></div>
+            </div>
+
+            <div class="live-map-card">
+              <div class="map-overlay-info">
+                <div class="driver-info">
+                  <i class="ri-user-star-fill driver-avatar"></i>
+                  <div>
+                    <strong>Marcus (Delivery Agent)</strong>
+                    <p>Arriving Today by 4:00 PM</p>
+                  </div>
+                </div>
+                <button class="call-driver-btn" onclick="showToast('Calling Marcus (+1 800-AURA-RIDE)...')"><i class="ri-phone-fill"></i></button>
+              </div>
+              <div class="map-bg-simulator">
+                <div class="pulse-marker"></div>
+                <span class="map-pin-label">📍 0.4 miles away</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-list">
+            <div class="menu-item" onclick="openConsumerLogin()">
+              <i class="ri-user-shared-line"></i><span>Customer Sign In</span><i class="ri-arrow-right-s-line"></i>
+            </div>
+            <a href="../admin/index.html" class="menu-item" style="text-decoration:none; color:inherit;">
+              <i class="ri-store-3-line"></i><span>Seller & Merchant Portal</span><i class="ri-arrow-right-s-line"></i>
+            </a>
+            <div class="menu-item" onclick="showToast('Help & Support')">
+              <i class="ri-customer-service-2-line"></i><span>Customer Support</span><i class="ri-arrow-right-s-line"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 6: CONSUMER LOGIN & SIGNUP PAGE -->
+      <section id="screen-consumer-login" class="app-screen auth-screen">
+        <div class="auth-top-nav">
+          <div class="auth-brand">
+            <i class="ri-sparkles-fill logo-icon"></i>
+            <span class="logo-text">AURA</span>
+          </div>
+          <a href="../admin/index.html" class="switch-mode-link">
+            Are you a seller? Seller Portal <i class="ri-arrow-right-line"></i>
+          </a>
+        </div>
+
+        <div class="screen-scroll auth-scroll">
+          <div class="auth-card">
+            <!-- Auth Tab Switcher -->
+            <div class="auth-tabs">
+              <button class="auth-tab-btn active" id="user-tab-login-btn" onclick="switchAuthTab('user', 'login')">Sign In</button>
+              <button class="auth-tab-btn" id="user-tab-signup-btn" onclick="switchAuthTab('user', 'signup')">Create Account</button>
+            </div>
+
+            <!-- CONSUMER SIGN IN PANE -->
+            <div id="user-pane-login" class="auth-form-pane active">
+              <div class="auth-header">
+                <h1 class="auth-title">Welcome back to AURA</h1>
+                <p class="auth-subtitle">Discover the latest fashion trends, personalized AI recommendations, and curated luxury drops.</p>
+              </div>
+
+              <form class="auth-form" onsubmit="handleConsumerSignIn(event)">
+                <div class="form-group">
+                  <label for="consumer-email">Email Address</label>
+                  <div class="input-with-icon">
+                    <i class="ri-mail-line input-icon"></i>
+                    <input type="email" id="consumer-email" placeholder="alex.rivera@aura.design" required value="alex.rivera@aura.design" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="label-row">
+                    <label for="consumer-password">Password</label>
+                    <a href="#" class="forgot-link" onclick="showToast('Password reset link sent to email')">Forgot Password?</a>
+                  </div>
+                  <div class="input-with-icon">
+                    <i class="ri-lock-2-line input-icon"></i>
+                    <input type="password" id="consumer-password" placeholder="••••••••••••" required value="Password123!" />
+                    <i class="ri-eye-off-line toggle-pass-icon" onclick="togglePasswordVisibility('consumer-password', this)"></i>
+                  </div>
+                </div>
+
+                <button type="submit" class="cta-pill full-width auth-primary-btn">
+                  Sign In <i class="ri-arrow-right-line"></i>
+                </button>
+              </form>
+
+              <div class="social-divider"><span>OR CONTINUE WITH</span></div>
+              <div class="social-login-grid">
+                <button class="social-btn" onclick="handleSocialLogin('Google')"><i class="ri-google-fill google-icon"></i> Google</button>
+                <button class="social-btn" onclick="handleSocialLogin('Apple')"><i class="ri-apple-fill apple-icon"></i> Apple</button>
+              </div>
+            </div>
+
+            <!-- CONSUMER SIGN UP PANE -->
+            <div id="user-pane-signup" class="auth-form-pane">
+              <div class="auth-header">
+                <h1 class="auth-title">Join AURA Club</h1>
+                <p class="auth-subtitle">Create your personal fashion profile & get $20 welcome voucher.</p>
+              </div>
+
+              <form class="auth-form" onsubmit="handleConsumerSignUp(event)">
+                <div class="form-group">
+                  <label for="user-signup-name">Full Name</label>
+                  <div class="input-with-icon">
+                    <i class="ri-user-3-line input-icon"></i>
+                    <input type="text" id="user-signup-name" placeholder="e.g. Alex Rivera" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="user-signup-email">Email Address</label>
+                  <div class="input-with-icon">
+                    <i class="ri-mail-line input-icon"></i>
+                    <input type="email" id="user-signup-email" placeholder="alex.rivera@aura.design" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="user-signup-password">Create Password</label>
+                  <div class="input-with-icon">
+                    <i class="ri-lock-2-line input-icon"></i>
+                    <input type="password" id="user-signup-password" placeholder="Min 6 characters" required />
+                    <i class="ri-eye-off-line toggle-pass-icon" onclick="togglePasswordVisibility('user-signup-password', this)"></i>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="user-signup-phone">Phone Number (Optional)</label>
+                  <div class="input-with-icon">
+                    <i class="ri-phone-line input-icon"></i>
+                    <input type="tel" id="user-signup-phone" placeholder="+1 (555) 000-1234" />
+                  </div>
+                </div>
+
+                <!-- Avatar Upload Field -->
+                <div class="form-group">
+                  <label>Profile Picture (Optional File Upload)</label>
+                  <div class="file-upload-box" onclick="document.getElementById('user-signup-avatar-file').click()">
+                    <input type="file" id="user-signup-avatar-file" accept="image/*" onchange="previewUploadImage(event, 'user-signup-avatar-preview')" />
+                    <div class="file-upload-label">
+                      <i class="ri-image-add-line"></i>
+                      <span>Click to upload profile photo</span>
+                    </div>
+                    <img id="user-signup-avatar-preview" class="file-preview-img" alt="Avatar Preview" />
+                  </div>
+                </div>
+
+                <button type="submit" class="cta-pill full-width auth-primary-btn">
+                  Create Account <i class="ri-user-add-line"></i>
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- CONSUMER BOTTOM NAVIGATION BAR -->
+    <nav class="bottom-nav-bar" id="consumer-bottom-nav">
+      <button class="nav-item active" onclick="navigateToScreen('screen-home')">
+        <i class="ri-home-5-line nav-icon"></i>
+        <span>Home</span>
+      </button>
+      <button class="nav-item" onclick="navigateToScreen('screen-search')">
+        <i class="ri-search-2-line nav-icon"></i>
+        <span>Explore</span>
+      </button>
+      <button class="nav-item nav-cart-icon" onclick="navigateToScreen('screen-cart')">
+        <i class="ri-shopping-bag-3-line nav-icon"></i>
+        <span class="badge" id="nav-cart-badge">2</span>
+        <span>Bag</span>
+      </button>
+      <button class="nav-item" onclick="navigateToScreen('screen-profile')">
+        <i class="ri-user-3-line nav-icon"></i>
+        <span>Account</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container"></div>
+
+  <script src="../shared/catalog-data.js"></script>
+  <script src="../shared/api-client.js"></script>
+  <script src="user-app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,102 @@
+/* ==========================================================================
+   AURA FASHION CATALOG DATABASE (SHARED MOCK DATA)
+   ========================================================================== */
+
+const PRODUCTS = [
+  {
+    id: 'p1',
+    sku: 'AUR-BLZ-01',
+    brand: 'AURA STUDIO',
+    title: 'AURA Oversized Silk-Linen Co-ord Blazer',
+    category: 'Women',
+    price: 149,
+    originalPrice: 249,
+    rating: 4.8,
+    reviews: 142,
+    discount: '40% OFF',
+    stock: 42,
+    status: 'In Stock',
+    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600',
+    tags: ['blazer', 'linen', 'co-ords', 'women']
+  },
+  {
+    id: 'p2',
+    sku: 'AUR-TEE-09',
+    brand: 'MONOCHROME',
+    title: 'Heavyweight Drop-Shoulder Tee',
+    category: 'Men',
+    price: 45,
+    originalPrice: 75,
+    rating: 4.9,
+    reviews: 88,
+    discount: '40% OFF',
+    stock: 5,
+    status: 'Low Stock',
+    image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600',
+    tags: ['tee', 'oversized', 'men', 'streetwear']
+  },
+  {
+    id: 'p3',
+    sku: 'AUR-TR-12',
+    brand: 'KINETIC',
+    title: 'Pleated Tailored Wide Trousers',
+    category: 'Men',
+    price: 89,
+    originalPrice: 130,
+    rating: 4.7,
+    reviews: 54,
+    discount: '31% OFF',
+    stock: 28,
+    status: 'In Stock',
+    image: 'https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=600',
+    tags: ['pants', 'trousers', 'pleated', 'formal']
+  },
+  {
+    id: 'p4',
+    sku: 'AUR-ETH-04',
+    brand: 'ETHNIC CRAFT',
+    title: 'Handwoven Chanderi Kurta Set',
+    category: 'Ethnic',
+    price: 110,
+    originalPrice: 180,
+    rating: 4.9,
+    reviews: 112,
+    discount: '38% OFF',
+    stock: 18,
+    status: 'In Stock',
+    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600',
+    tags: ['ethnic', 'kurta', 'festive']
+  },
+  {
+    id: 'p5',
+    sku: 'AUR-JKT-07',
+    brand: 'AURA URBAN',
+    title: 'Minimalist Utility Bomber Jacket',
+    category: 'Streetwear',
+    price: 120,
+    originalPrice: 180,
+    rating: 4.6,
+    reviews: 67,
+    discount: '33% OFF',
+    stock: 14,
+    status: 'In Stock',
+    image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600',
+    tags: ['jacket', 'bomber', 'streetwear', 'men']
+  },
+  {
+    id: 'p6',
+    sku: 'AUR-DRS-03',
+    brand: 'LUMEN',
+    title: 'Draped Asymmetric Satin Midi Dress',
+    category: 'Women',
+    price: 135,
+    originalPrice: 210,
+    rating: 4.8,
+    reviews: 95,
+    discount: '35% OFF',
+    stock: 22,
+    status: 'In Stock',
+    image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600',
+    tags: ['dress', 'satin', 'women', 'party']
+  }
+];
