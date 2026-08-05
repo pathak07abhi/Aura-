@@ -163,7 +163,7 @@ function renderHomeProducts(items) {
         <span class="card-brand">${p.brand}</span>
         <h4 class="card-title">${p.title}</h4>
         <div class="card-price-row">
-          <span class="card-price">$${p.price}</span>
+          <span class="card-price">₹${Number(p.price).toLocaleString('en-IN')}</span>
           <span class="rating-tag"><i class="ri-star-fill"></i> ${p.rating}</span>
         </div>
       </div>
@@ -184,7 +184,7 @@ function renderSearchProducts(items) {
         <span class="card-brand">${p.brand}</span>
         <h4 class="card-title">${p.title}</h4>
         <div class="card-price-row">
-          <span class="card-price">$${p.price}</span>
+          <span class="card-price">₹${Number(p.price).toLocaleString('en-IN')}</span>
           <span class="rating-tag"><i class="ri-star-fill"></i> ${p.rating}</span>
         </div>
       </div>
@@ -196,7 +196,7 @@ function openPDP(productId) {
   const prod = PRODUCTS.find(p => p.id === productId) || PRODUCTS[0];
   document.getElementById('pdp-main-image').src = prod.image;
   document.getElementById('pdp-title').innerText = prod.title;
-  document.getElementById('pdp-price').innerText = `$${prod.price}`;
+  document.getElementById('pdp-price').innerText = `₹${Number(prod.price).toLocaleString('en-IN')}`;
   navigateToScreen('screen-pdp');
 }
 

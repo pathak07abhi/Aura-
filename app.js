@@ -704,7 +704,7 @@ function renderAdminInventoryList(items) {
       <img src="${p.image}" alt="${p.title}" />
       <div class="inv-info">
         <strong>${p.title}</strong>
-        <span class="inv-sku">SKU: ${p.sku || 'AUR-SKU'} • $${p.price}</span>
+        <span class="inv-sku">SKU: ${p.sku || 'AUR-SKU'} • ₹${Number(p.price).toLocaleString('en-IN')}</span>
         <span class="status-pill ${p.stock > 10 ? 'in-stock' : 'low-stock'}">${p.stock > 0 ? `In Stock (${p.stock} units)` : 'Out of Stock'}</span>
       </div>
       <div class="inv-stepper">
@@ -783,12 +783,13 @@ async function handleUserAvatarUpload(event) {
 function openPaymentDrawer() {
   const modal = document.getElementById('payment-modal');
   const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-  const tax = subtotal * 0.08;
-  const discount = subtotal * 0.20;
-  const total = subtotal + tax - discount;
+  const tax = Math.round(subtotal * 0.18);
+  const isPromo = document.getElementById('promo-status')?.innerText.includes('AURA20');
+  const discount = isPromo ? Math.round(subtotal * 0.20) : 0;
+  const total = Math.max(0, Math.round(subtotal + tax - discount));
 
   const totalEl = document.getElementById('modal-total-pay');
-  if (totalEl) totalEl.innerText = `$${total.toFixed(2)}`;
+  if (totalEl) totalEl.innerText = `₹${total.toLocaleString('en-IN')}`;
 
   if (modal) modal.classList.add('active');
 }
